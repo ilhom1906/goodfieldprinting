@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Book Printing Studio</title>
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--text:#1d1d1b;--muted:#6b6a65;--accent:#2a6f4f;--on-accent:#fff;--line:#dcdad2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171716;--card:#232321;--text:#f0efe9;--muted:#a3a29b;--accent:#5fbf92;--on-accent:#10261b;--line:#3a3a36}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.5}
+.wrap{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:34px;line-height:1.15;margin:28px 0 10px}
+h2{font-size:22px;margin:36px 0 12px}
+p{margin:0 0 12px}
+.muted{color:var(--muted)}
+.sans{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.btn{display:inline-block;padding:13px 20px;border-radius:12px;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600;font-family:system-ui,sans-serif}
+.btn.alt{background:transparent;color:var(--text);border:1px solid var(--line);margin-left:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.card h3{margin:0 0 6px;font-size:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.book{aspect-ratio:3/4;border-radius:6px 12px 12px 6px;border:1px solid var(--line);display:flex;align-items:flex-end;padding:12px;font-size:14px;color:#fff;font-family:system-ui,sans-serif;box-shadow:inset 6px 0 0 rgba(0,0,0,.18)}
+.b1{background:#2a6f4f}.b2{background:#8a4b2a}.b3{background:#2d4a78}.b4{background:#6b3b6e}
+.steps{counter-reset:s;padding:0;list-style:none}
+.steps li{counter-increment:s;padding-left:38px;position:relative;margin-bottom:12px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);text-align:center;line-height:26px;font:600 14px system-ui,sans-serif}
+a.link{color:var(--accent)}
+.ocard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+input,select{width:100%;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text)}
+.row{display:flex;gap:10px}.row>div{flex:1}
+.seg{display:flex;gap:8px}
+.seg button{flex:1;padding:12px;font-size:16px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text)}
+.seg button.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.price{font-size:30px;font-weight:700;color:var(--accent)}
+.osmall{font-size:13px;color:var(--muted)}
+.obtn{width:100%;padding:14px;font-size:17px;border:0;border-radius:12px;background:var(--accent);color:var(--on-accent);font-weight:600;margin-top:8px}
+.obtn.alt{background:transparent;color:var(--text);border:1px solid var(--line)}
+pre{white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0}
+.err{color:#c0392b;font-size:14px;min-height:18px}
+.ocard{margin-bottom:12px}
+.chk{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text);margin:10px 0 0;font-family:system-ui,sans-serif}
+.chk input{width:20px;height:20px;padding:0;flex:none}
+.gap{margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="sans muted" style="margin-top:8px">Book Printing Studio</p>
+<h1>Your book, printed with care.</h1>
+<p class="muted">Small runs, clean binding, honest deadlines. From a single copy to a stack for your whole group.</p>
+<p><a class="btn" href="#order">Place an order</a></p>
+
+<h2>What I offer</h2>
+<div class="card"><h3>Glue binding</h3><p class="muted">A clean, flat spine. Best for novels, study books and ministry materials.</p></div>
+<div class="card"><h3>Spiral binding</h3><p class="muted">Lies flat when open. Best for workbooks, notebooks and training guides.</p></div>
+
+<h2>Sample work</h2>
+<div class="grid">
+<div class="book b1">Study guide</div>
+<div class="book b2">Devotional</div>
+<div class="book b3">Workbook</div>
+<div class="book b4">Notebook</div>
+</div>
+<p class="muted sans" style="font-size:13px;margin-top:8px">Placeholders. Real photos can replace these.</p>
+
+<h2>How it works</h2>
+<ol class="steps">
+<li>Choose binding and enter the number of pages. The price is shown right away.</li>
+<li>Pick your deadline and send the order.</li>
+<li>I confirm the details and start printing.</li>
+</ol>
+
+<h2 id="order">Place an order</h2>
+<div class="ocard">
+<div class="seg" id="mode">
+<button data-v="order" class="on">Customer order</button>
+<button data-v="log">Staff print log</button>
+</div>
+</div>
+
+
+<div class="ocard">
+<label>Binding (5.00 TJS per book)</label>
+<div class="seg" id="binding">
+<button data-v="Glue" class="on">Glue</button>
+<button data-v="Spiral">Spiral</button>
+</div>
+</div>
+<div class="ocard">
+<label>Printing</label>
+<div class="seg" id="color">
+<button data-v="B&W" class="on">B&amp;W</button>
+<button data-v="Colour">Colour</button>
+</div>
+<div class="seg gap" id="sides">
+<button data-v="Single" class="on">Single-sided</button>
+<button data-v="Double">Double-sided</button>
+</div>
+<label class="chk"><input type="checkbox" id="card"> Print on card stock (+1.00 TJS per sheet)</label>
+<label class="chk"><input type="checkbox" id="cut"> Cut to A5 (+2.00 TJS per book)</label>
+</div>
+<div class="ocard">
+<div class="row">
+<div><label for="pages">Pages per book (A4)</label><input id="pages" type="number" inputmode="numeric" min="1" value="100"></div>
+<div><label for="copies">Number of books</label><input id="copies" type="number" inputmode="numeric" min="1" value="1"></div>
+</div>
+<p class="osmall" id="tier"></p>
+</div>
+<div class="ocard" id="cust">
+<div class="row">
+<div><label for="fn">First name</label><input id="fn" autocomplete="given-name"></div>
+<div><label for="ln">Last name</label><input id="ln" autocomplete="family-name"></div>
+</div>
+</div>
+<div class="ocard" id="dlcard">
+<label for="dl">Deadline</label><input id="dl" type="date">
+</div>
+<div class="ocard" id="staffcard" style="display:none">
+<div class="row">
+<div><label for="staff">Printed by</label>
+<select id="staff"><option>Ilhom</option><option>Ed</option><option>Daniel</option><option>Teddy</option><option>Katie</option></select></div>
+<div><label for="pd">Date</label><input id="pd" type="date"></div>
+</div>
+</div>
+<div class="ocard">
+<div class="osmall">Total price</div>
+<div class="price" id="total">0.00 TJS</div>
+</div>
+
+<div class="err" id="err"></div>
+<button class="obtn" id="send">Send order</button>
+<button class="obtn alt" id="copy">Copy order text</button>
+<p class="osmall" id="msg"></p>
+
+
+</div>
+<script>
+// ---- PRICE LIST (TJS): change the numbers here ----
+var PRICE = {                       // price per printed A4 sheet
+  "B&W":   { Single: 0.80, Double: 1.50 },
+  "Colour":{ Single: 2.40, Double: 4.50 }
+};
+var CARD_PER_SHEET = 1.00;          // extra per sheet when printed on card stock
+var CUT_A5 = 2.00;                  // cutting to A5, per book
+var BINDING = { Glue: 5.00, Spiral: 5.00 }; // per book
+var SCRIPT_URL = "";                // paste the Google Apps Script Web app URL here
+var EMAIL = "caps.ilhom@proton.me"; // used only until SCRIPT_URL is set
+// ----------------------------------------------------
+
+var sel = { binding: "Glue", color: "B&W", sides: "Single", mode: "order" };
+var $ = function(id){ return document.getElementById(id); };
+var dl = $("dl");
+var iso = function(d){ return d.toISOString().slice(0,10); };
+var tm = new Date(); tm.setDate(tm.getDate()+1); dl.min = iso(tm);
+$("pd").value = iso(new Date());
+function money(n){ return n.toFixed(2) + " TJS"; }
+
+function figures(){
+  var p = parseInt($("pages").value,10) || 0;
+  var c = parseInt($("copies").value,10) || 0;
+  var sheets = sel.sides === "Double" ? Math.ceil(p/2) : p;
+  var perSheet = PRICE[sel.color][sel.sides] + ($("card").checked ? CARD_PER_SHEET : 0);
+  var perBook = sheets * perSheet + ($("cut").checked ? CUT_A5 : 0) + BINDING[sel.binding];
+  return { p:p, c:c, sheets:sheets, perSheet:perSheet, perBook:perBook, total:(p>0&&c>0)? c*perBook : 0 };
+}
+function calc(){
+  var f = figures();
+  $("total").textContent = money(f.total);
+  $("tier").textContent = f.p > 0 ? f.sheets + " sheets x " + f.perSheet.toFixed(2) + " + binding" + ($("cut").checked ? " + cutting" : "") + " = " + money(f.perBook) + " per book" : "";
+}
+function printing(){
+  return sel.color + ", " + sel.sides + "-sided" + ($("card").checked ? ", card stock" : "") + ($("cut").checked ? ", cut to A5" : "");
+}
+function data(){
+  var f = figures();
+  var isLog = sel.mode === "log";
+  return {
+    type: sel.mode,
+    name: isLog ? $("staff").value : ($("fn").value.trim() + " " + $("ln").value.trim()),
+    date: isLog ? $("pd").value : dl.value,
+    binding: sel.binding, printing: printing(),
+    pages: f.p, copies: f.c, sheets: f.sheets * f.c, total: f.total.toFixed(2)
+  };
+}
+function text(){
+  var d = data();
+  return (d.type === "log" ? "Print log\nPrinted by: " : "New book printing order\nName: ") + d.name + "\n" +
+    (d.type === "log" ? "Date: " : "Deadline: ") + d.date + "\n" +
+    "Binding: " + d.binding + "\nPrinting: " + d.printing + "\n" +
+    "Pages per book: " + d.pages + "\nNumber of books: " + d.copies + "\n" +
+    "Total sheets: " + d.sheets + "\nTotal: " + money(parseFloat(d.total));
+}
+function valid(){
+  var e = "";
+  if(sel.mode === "order" && (!$("fn").value.trim() || !$("ln").value.trim())) e = "Please enter first and last name.";
+  else if(!(parseInt($("pages").value,10) > 0)) e = "Please enter the number of pages.";
+  else if(!(parseInt($("copies").value,10) > 0)) e = "Please enter the number of books.";
+  else if(sel.mode === "order" && !dl.value) e = "Please choose a deadline.";
+  else if(sel.mode === "log" && !$("pd").value) e = "Please choose the date.";
+  $("err").textContent = e;
+  return !e;
+}
+function setMode(m){
+  sel.mode = m;
+  var log = m === "log";
+  $("cust").style.display = log ? "none" : "";
+  $("dlcard").style.display = log ? "none" : "";
+  $("staffcard").style.display = log ? "" : "none";
+  $("send").textContent = log ? "Save print log" : "Send order";
+  $("err").textContent = ""; $("msg").textContent = "";
+}
+["mode","binding","color","sides"].forEach(function(g){
+  document.querySelectorAll("#"+g+" button").forEach(function(b){
+    b.onclick = function(){
+      document.querySelectorAll("#"+g+" button").forEach(function(x){ x.classList.remove("on"); });
+      b.classList.add("on"); sel[g] = b.dataset.v;
+      if(g === "mode") setMode(b.dataset.v); else calc();
+    };
+  });
+});
+["pages","copies"].forEach(function(id){ $(id).oninput = calc; });
+["card","cut"].forEach(function(id){ $(id).onchange = calc; });
+$("send").onclick = function(){
+  if(!valid()) return;
+  var d = data(), url;
+  if(SCRIPT_URL){
+    url = SCRIPT_URL + "?" + Object.keys(d).map(function(k){ return k + "=" + encodeURIComponent(d[k]); }).join("&");
+  } else {
+    url = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(d.type === "log" ? "Print log" : "New book order") + "&body=" + encodeURIComponent(text());
+  }
+  window.open(url, "_blank");
+};
+$("copy").onclick = function(){
+  if(!valid()) return;
+  var t = text();
+  if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){ $("msg").textContent = "Copied."; }, function(){ $("msg").textContent = "Copy failed."; }); }
+  else { $("msg").textContent = "Copy is not available here."; }
+};
+calc();
+</script>
+</body>
+</html>
