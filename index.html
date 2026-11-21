@@ -65,8 +65,30 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 .lang svg{display:block;width:16px;height:16px}
 #theme button{padding:7px 11px}
 :root[data-theme="dark"]{--ink:#E8EEF8;--muted:#9AA9C4;--c:#7FA9DA;--g:#74BE58;--y:#A6D26A;--n:#5C7FB0;--err:#FF8A80;--glass:rgba(22,32,54,.55);--edge:rgba(255,255,255,.16);--sh:0 10px 34px rgba(0,0,0,.45);--bg:#0A1220;--b1:#173A6B;--b2:#1B4527;--b3:#142849;--b4:#26421C;--field:rgba(255,255,255,.07);--segbg:rgba(255,255,255,.08);--thumb:rgba(255,255,255,.2);--on:#8DD16F;--alt:rgba(255,255,255,.1);--rule:rgba(255,255,255,.12);--hi:rgba(255,255,255,.14);--hi2:rgba(255,255,255,.04);color-scheme:dark}
+.gate{position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:20px;background:rgba(10,18,32,.38);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.gatebox{width:100%;max-width:340px;margin:0;padding:20px}
+.gatebox h3{margin:0 0 6px;font-size:20px;letter-spacing:-.02em}
+.acc{display:flex;align-items:center;justify-content:space-between;width:100%;margin:44px 0 0;padding:16px 18px;font:inherit;font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--ink);text-align:left;background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);border:1px solid var(--edge);border-radius:24px;box-shadow:var(--sh),inset 0 1px 0 var(--hi),inset 0 -1px 0 var(--hi2);transition:transform .2s cubic-bezier(.32,.72,0,1)}
+.acc:active{transform:scale(.98)}
+.acc svg{width:20px;height:20px;flex:none;transition:transform .4s cubic-bezier(.32,.72,0,1)}
+.acc[aria-expanded="true"] svg{transform:rotate(180deg)}
+.accpanel{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .45s cubic-bezier(.32,.72,0,1),opacity .3s ease}
+.accpanel.open{grid-template-rows:1fr;opacity:1}
+.accinner{overflow:hidden;min-height:0;visibility:hidden;transition:visibility 0s linear .45s}
+.accpanel.open .accinner{visibility:visible;transition-delay:0s}
+.accpanel .card{margin:12px 0 0;box-shadow:inset 0 1px 0 var(--hi),inset 0 -1px 0 var(--hi2)}
 </style>
 <link rel="icon" href="data:image/jpeg;base64,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">
+<meta name="description" content="Печать книг и документов. Выберите параметры, сразу увидите цену и отправьте заказ. · Book and document printing: see the price, send your order.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Goodfield Printing">
+<meta property="og:title" content="Goodfield Printing">
+<meta property="og:description" content="Печать книг и документов. Выберите параметры, сразу увидите цену и отправьте заказ. · Book and document printing: see the price, send your order.">
+<meta property="og:url" content="https://ilhom1906.github.io/bookshoparcha/">
+<meta property="og:image" content="https://ilhom1906.github.io/bookshoparcha/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta name="theme-color" content="#EEF3FA">
@@ -83,7 +105,8 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <p class="lead">One copy or a hundred. Choose the binding, see the price at once, send your order.</p>
 <p><a class="btn" href="#order">Place an order</a></p>
 
-<h2>Price list</h2>
+<button class="acc" id="priceBtn" type="button" aria-expanded="false" aria-controls="pricePanel"><span>Price list</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+<div class="accpanel" id="pricePanel"><div class="accinner">
 <div class="card k3">
 <div class="pl-h" style="margin-top:0">Printing, per A4 sheet</div>
 <div class="pl"><span>A4 B&amp;W, single-sided</span><b>{bw_single} TJS</b></div>
@@ -96,6 +119,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div class="pl"><span>Glue binding</span><b>{glue} TJS</b></div>
 <div class="pl"><span>Spiral binding</span><b>{spiral} TJS</b></div>
 </div>
+</div></div>
 
 <h2>How it works</h2>
 <ol class="steps">
@@ -175,6 +199,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 
 
 </div>
+<div id="gate" class="gate" style="display:none"><div class="ocard gatebox"><h3>Staff access</h3><p class="osmall" style="margin:0 0 12px">Enter the staff code.</p><input id="gc" type="password" autocomplete="off"><div class="err" id="ge" style="margin-top:8px"></div><div class="row" style="gap:8px"><button class="obtn alt" id="gx" type="button">Cancel</button><button class="obtn" id="go" type="button">Unlock</button></div></div></div>
 <script>
 // ---- PRICE LIST (TJS): change the numbers here ----
 var PRICE = {                       // price per printed A4 sheet
@@ -224,7 +249,7 @@ function data(){
     date: isLog ? $("pd").value : dl.value,
     binding: sel.binding, printing: printing(),
     pages: f.p, copies: f.c, sheets: f.sheets * f.c, total: f.total.toFixed(2),
-    forwho: isLog ? $("forwho").value.trim() : "", worker: isLog ? $("worker").value : "", contact: isLog ? "" : fullPhone(), discount: f.disc ? "30%" : "0%"
+    forwho: isLog ? $("forwho").value.trim() : "", worker: isLog ? $("worker").value : "", contact: isLog ? "" : fullPhone(), code: isLog ? STAFF_CODE : "", discount: f.disc ? "30%" : "0%"
   };
 }
 function text(){
@@ -304,7 +329,7 @@ document.querySelectorAll(".seg").forEach(function(seg){
 });
 var LANG = "en";
 var D = { ru:{} };
-([["Books, printed in small runs.", "Печать книг малыми тиражами."], ["One copy or a hundred. Choose the binding, see the price at once, send your order.", "Одна копия или сто. Выберите переплёт, сразу увидите цену и отправьте заказ."], ["Place an order", "Сделать заказ"], ["Glue binding", "Клеевой переплёт"], ["Spiral binding", "Переплёт на пружину"], ["Price list", "Прайс-лист"], ["Printing, per A4 sheet", "Печать, за лист A4"], ["A4 B&W, single-sided", "A4 чёрно-белая, односторонняя"], ["A4 B&W, double-sided", "A4 чёрно-белая, двусторонняя"], ["A4 Colour, single-sided", "A4 цветная, односторонняя"], ["A4 Colour, double-sided", "A4 цветная, двусторонняя"], ["Extras", "Дополнительно"], ["Card printing", "Печать на картоне"], ["Cutting to A5", "Резка до A5"], ["How it works", "Как это работает"], ["Choose the printing options and enter the number of pages. The price is shown right away.", "Выберите параметры печати и укажите число страниц. Цена показывается сразу."], ["Pick your deadline and send the order.", "Выберите срок и отправьте заказ."], ["I confirm the details and start printing.", "Я подтверждаю детали и начинаю печать."], ["Customer order", "Заказ клиента"], ["Staff print log", "Журнал печати сотрудников"], ["Glue", "Клей"], ["Spiral", "Пружина"], ["None", "Нет"], ["Printing", "Печать"], ["B&W", "Ч/Б"], ["Colour", "Цвет"], ["Single-sided", "Односторонняя"], ["Double-sided", "Двусторонняя"], ["Pages per copy (A4)", "Страниц в копии (A4)"], ["Number of copies", "Количество копий"], ["First name", "Имя"], ["Last name", "Фамилия"], ["Phone number (linked to WhatsApp or Telegram)", "Номер телефона (привязанный к WhatsApp или Telegram)"], ["Type the number without the country code. Another country? Choose Other and type the full number starting with +.", "Введите номер без кода страны. Другая страна? Выберите «Другая» и введите номер полностью, начиная с +."], ["Other (type full number with +)", "Другая (номер полностью с +)"], ["Deadline", "Срок"], ["Date", "Дата"], ["Who's it for?", "Для кого?"], ["Who's going to do the work?", "Кто будет выполнять работу?"], ["Total price", "Итого"], ["Phone number", "Номер телефона"], ["Write here", "Напишите здесь"], [" sheets x ", " листов x "], [" + binding", " + переплёт"], [" + cutting", " + резка"], [" per copy", " за копию"], [", before discount ", ", до скидки "], ["Please enter first and last name.", "Введите имя и фамилию."], ["Please enter a valid phone number linked to WhatsApp or Telegram.", "Введите корректный номер телефона, привязанный к WhatsApp или Telegram."], ["Please enter the number of pages.", "Укажите количество страниц."], ["Please enter the number of copies.", "Укажите количество копий."], ["Please choose a deadline.", "Выберите срок."], ["Please choose the date.", "Выберите дату."], ["Please enter who it is for.", "Укажите, для кого."], ["Save print log", "Сохранить запись"], ["Send order", "Отправить заказ"], ["+{card} TJS per sheet", "+{card} TJS за лист"], ["Binding (per copy; choose None for plain printouts)", "Переплёт (за копию; выберите «Нет» для обычной распечатки)"], ["Print on card stock (+{card} TJS per sheet)", "Печать на картоне (+{card} TJS за лист)"], ["Cut to A5 (+{cut} TJS per copy)", "Резка до A5 (+{cut} TJS за копию)"], ["Staff price: the {disc}% discount is applied automatically.", "Цена для сотрудников: скидка {disc}% применяется автоматически."], [", staff discount ", ", скидка сотрудникам "], ["Staff report", "Отчёт по сотрудникам"], ["Enter the report code", "Введите код отчёта"], ["The report works after the Google script is connected.", "Отчёт заработает после подключения скрипта Google."]]).forEach(function(r){ D.ru[r[0]] = r[1]; });
+([["Books, printed in small runs.", "Печать книг малыми тиражами."], ["One copy or a hundred. Choose the binding, see the price at once, send your order.", "Одна копия или сто. Выберите переплёт, сразу увидите цену и отправьте заказ."], ["Place an order", "Сделать заказ"], ["Glue binding", "Клеевой переплёт"], ["Spiral binding", "Переплёт на пружину"], ["Price list", "Прайс-лист"], ["Printing, per A4 sheet", "Печать, за лист A4"], ["A4 B&W, single-sided", "A4 чёрно-белая, односторонняя"], ["A4 B&W, double-sided", "A4 чёрно-белая, двусторонняя"], ["A4 Colour, single-sided", "A4 цветная, односторонняя"], ["A4 Colour, double-sided", "A4 цветная, двусторонняя"], ["Extras", "Дополнительно"], ["Card printing", "Печать на картоне"], ["Cutting to A5", "Резка до A5"], ["How it works", "Как это работает"], ["Choose the printing options and enter the number of pages. The price is shown right away.", "Выберите параметры печати и укажите число страниц. Цена показывается сразу."], ["Pick your deadline and send the order.", "Выберите срок и отправьте заказ."], ["I confirm the details and start printing.", "Я подтверждаю детали и начинаю печать."], ["Customer order", "Заказ клиента"], ["Staff print log", "Журнал печати сотрудников"], ["Glue", "Клей"], ["Spiral", "Пружина"], ["None", "Нет"], ["Printing", "Печать"], ["B&W", "Ч/Б"], ["Colour", "Цвет"], ["Single-sided", "Односторонняя"], ["Double-sided", "Двусторонняя"], ["Pages per copy (A4)", "Страниц в копии (A4)"], ["Number of copies", "Количество копий"], ["First name", "Имя"], ["Last name", "Фамилия"], ["Phone number (linked to WhatsApp or Telegram)", "Номер телефона (привязанный к WhatsApp или Telegram)"], ["Type the number without the country code. Another country? Choose Other and type the full number starting with +.", "Введите номер без кода страны. Другая страна? Выберите «Другая» и введите номер полностью, начиная с +."], ["Other (type full number with +)", "Другая (номер полностью с +)"], ["Deadline", "Срок"], ["Date", "Дата"], ["Who's it for?", "Для кого?"], ["Who's going to do the work?", "Кто будет выполнять работу?"], ["Total price", "Итого"], ["Phone number", "Номер телефона"], ["Write here", "Напишите здесь"], [" sheets x ", " листов x "], [" + binding", " + переплёт"], [" + cutting", " + резка"], [" per copy", " за копию"], [", before discount ", ", до скидки "], ["Please enter first and last name.", "Введите имя и фамилию."], ["Please enter a valid phone number linked to WhatsApp or Telegram.", "Введите корректный номер телефона, привязанный к WhatsApp или Telegram."], ["Please enter the number of pages.", "Укажите количество страниц."], ["Please enter the number of copies.", "Укажите количество копий."], ["Please choose a deadline.", "Выберите срок."], ["Please choose the date.", "Выберите дату."], ["Please enter who it is for.", "Укажите, для кого."], ["Save print log", "Сохранить запись"], ["Send order", "Отправить заказ"], ["+{card} TJS per sheet", "+{card} TJS за лист"], ["Binding (per copy; choose None for plain printouts)", "Переплёт (за копию; выберите «Нет» для обычной распечатки)"], ["Print on card stock (+{card} TJS per sheet)", "Печать на картоне (+{card} TJS за лист)"], ["Cut to A5 (+{cut} TJS per copy)", "Резка до A5 (+{cut} TJS за копию)"], ["Staff price: the {disc}% discount is applied automatically.", "Цена для сотрудников: скидка {disc}% применяется автоматически."], [", staff discount ", ", скидка сотрудникам "], ["Staff report", "Отчёт по сотрудникам"], ["The report works after the Google script is connected.", "Отчёт заработает после подключения скрипта Google."], ["Staff access", "Доступ сотрудников"], ["Enter the staff code.", "Введите код сотрудника."], ["Cancel", "Отмена"], ["Unlock", "Открыть"], ["Wrong code.", "Неверный код."], ["Could not check the code. Check your connection and try again.", "Не удалось проверить код. Проверьте интернет и попробуйте снова."]]).forEach(function(r){ D.ru[r[0]] = r[1]; });
 function t(s){ var d = D[LANG]; return (d && d[s]) || s; }
 function updateSend(){ $("send").textContent = t(sel.mode === "log" ? "Save print log" : "Send order"); }
 var orig = typeof WeakMap !== "undefined" ? new WeakMap() : null;
@@ -320,7 +345,7 @@ function applyLang(){
     var tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null), n;
     while((n = tw.nextNode())){
       var p = n.parentNode;
-      if(!p || /^(SCRIPT|STYLE)$/.test(p.nodeName) || (p.closest && p.closest("#tier,#total,#err,#msg,#send"))) continue;
+      if(!p || /^(SCRIPT|STYLE)$/.test(p.nodeName) || (p.closest && p.closest("#tier,#total,#err,#msg,#send,#ge"))) continue;
       if(!orig.has(n)) orig.set(n, n.nodeValue);
       var o = orig.get(n), key = o.trim();
       if(!key) continue;
@@ -349,6 +374,29 @@ function setLang(l){
   LANG = (saved === "ru" || saved === "en") ? saved : (nav.indexOf("ru") === 0 ? "ru" : "en");
   document.querySelectorAll("#lang button").forEach(function(b){ b.classList.toggle("on", b.dataset.v === LANG); });
 })();
+var STAFF_CODE = "";
+try{ STAFF_CODE = sessionStorage.getItem("gf_staff") || ""; }catch(e){}
+function askCode(done){
+  var g = $("gate"), inp = $("gc"), err = $("ge");
+  inp.value = ""; err.textContent = "";
+  g.style.display = "flex"; g.classList.remove("show"); void g.offsetWidth; g.classList.add("show");
+  setTimeout(function(){ inp.focus(); }, 80);
+  function close(){ g.style.display = "none"; }
+  g.onclick = function(ev){ if(ev.target === g) close(); };
+  $("gx").onclick = close;
+  inp.onkeydown = function(ev){ if(ev.key === "Enter") $("go").click(); };
+  $("go").onclick = function(){
+    var code = inp.value.trim();
+    if(!code) return;
+    if(!SCRIPT_URL || !window.fetch){ err.textContent = t("Could not check the code. Check your connection and try again."); return; }
+    err.textContent = ""; $("go").disabled = true;
+    fetch(SCRIPT_URL + "?type=auth&code=" + encodeURIComponent(code)).then(function(r){ return r.json(); }).then(function(j){
+      $("go").disabled = false;
+      if(j && j.ok){ STAFF_CODE = code; try{ sessionStorage.setItem("gf_staff", code); }catch(e){} close(); done(); }
+      else err.textContent = t("Wrong code.");
+    }).catch(function(){ $("go").disabled = false; err.textContent = t("Could not check the code. Check your connection and try again."); });
+  };
+}
 function applyTheme(th){
   document.documentElement.setAttribute("data-theme", th);
   var m = document.querySelector('meta[name="theme-color"]');
@@ -367,6 +415,7 @@ function setTheme(th){
 ["mode","binding","color","sides","lang","theme"].forEach(function(g){
   document.querySelectorAll("#"+g+" button").forEach(function(b){
     b.onclick = function(){
+      if(g === "mode" && b.dataset.v === "log" && !STAFF_CODE){ askCode(function(){ b.click(); }); return; }
       document.querySelectorAll("#"+g+" button").forEach(function(x){ x.classList.remove("on"); });
       b.classList.add("on"); sel[g] = b.dataset.v;
       place($(g));
@@ -377,6 +426,10 @@ function setTheme(th){
 ["pages","copies"].forEach(function(id){ $(id).oninput = calc; });
 ["card","cut"].forEach(function(id){ $(id).onchange = calc; });
 $("forwho").oninput = calc;
+$("priceBtn").onclick = function(){
+  var open = $("pricePanel").classList.toggle("open");
+  this.setAttribute("aria-expanded", open ? "true" : "false");
+};
 $("send").onclick = function(){
   if(!valid()) return;
   var d = data(), url;
@@ -389,7 +442,7 @@ $("send").onclick = function(){
 };
 $("report").onclick = function(){
   if(!SCRIPT_URL){ $("msg").textContent = t("The report works after the Google script is connected."); return; }
-  var code = window.prompt(t("Enter the report code"));
+  var code = STAFF_CODE;
   if(!code) return;
   window.open(SCRIPT_URL + "?type=report&code=" + encodeURIComponent(code), "_blank");
 };
