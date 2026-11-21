@@ -191,7 +191,7 @@ var CARD_PER_SHEET = 1.00;          // extra per sheet when printed on card stoc
 var CUT_A5 = 2.00;                  // cutting to A5, per copy
 var BINDING = { Glue: 5.00, Spiral: 5.00, None: 0.00 }; // per copy
 var DISCOUNT = 0.30;                // 30% staff discount (print log only)
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwn4Diurm7xznUiBms0H792NfX73iREOEneuWU0gLCMGKlXSPGnJbsVYeRefPENoamzXQ/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyHFsIbFgVZsUm9IbwTBBN_7e3M0SbjwNcQ5m8ZRDfrV-SD1Lj3C8Nd8Vs-iR3LAwjM1w/exec";
 var EMAIL = "caps.ilhom@gmail.com"; // used only until SCRIPT_URL is set
 // ----------------------------------------------------
 
@@ -401,9 +401,16 @@ $("report").onclick = function(){
 };
 $("copy").onclick = function(){
   if(!valid()) return;
-  var t = text();
-  if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){ $("msg").textContent = t("Copied."); }, function(){ $("msg").textContent = t("Copy failed."); }); }
-  else { $("msg").textContent = t("Copy is not available here."); }
+  var copiedText = text();
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(copiedText).then(
+      function(){ $("msg").textContent = t("Copied."); },
+      function(){ $("msg").textContent = t("Copy failed."); }
+    );
+  } else {
+    $("msg").textContent = t("Copy is not available here.");
+  }
+};
 };
 function applyPrices(o){
   function n(v){ v = parseFloat(v); return isFinite(v) && v >= 0 ? v : null; }
