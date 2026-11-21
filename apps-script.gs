@@ -15,7 +15,19 @@ var DEFAULT_PRICES = [
 ];
 
 function clean(v) { return String(v || '').substring(0, 200); }
+function cleanLong(v) { return String(v || '').substring(0, 500); }
 function esc(v) { return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function jsonOut(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
+
+// One code for staff access, print log and staff report: script property REPORT_CODE
+function checkCode(code) {
+  var c = PropertiesService.getScriptProperties().getProperty('REPORT_CODE');
+  var ok = !!c && String(code || '') === c;
+  if (!ok) Utilities.sleep(800);
+  return ok;
+}
 
 function getSheet(name, header) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -30,8 +42,10 @@ function getSheet(name, header) {
 }
 
 function ordersSheet() {
-  return getSheet('Orders', ['No.', 'Received', 'Status', 'Name', 'Phone (WhatsApp/Telegram)', 'Deadline',
-    'Binding', 'Printing', 'Pages per copy', 'Copies', 'Total TJS']);
+  var sh = getSheet('Orders', ['No.', 'Received', 'Status', 'Name', 'Phone (WhatsApp/Telegram)', 'Deadline',
+    'Binding', 'Printing', 'Pages per copy', 'Copies', 'Total TJS', 'File link']);
+  if (sh.getRange(1, 12).getValue() === '') sh.getRange(1, 12).setValue('File link').setFontWeight('bold');
+  return sh;
 }
 function logSheet() {
   return getSheet('Print Log', ['Saved at', 'Work by', 'Date', 'For', 'Discount', 'Binding', 'Printing',
@@ -49,13 +63,12 @@ function pricesJson() {
     var n = Number(String(r[1]).replace(',', '.'));
     out[String(r[0])] = isNaN(n) ? r[1] : n;
   });
-  return ContentService.createTextOutput(JSON.stringify(out)).setMimeType(ContentService.MimeType.JSON);
+  return jsonOut(out);
 }
 
 function reportPage(p) {
-  var code = PropertiesService.getScriptProperties().getProperty('REPORT_CODE');
-  if (!code || p.code !== code) {
-    return HtmlService.createHtmlOutput('<p style="font-family:sans-serif;padding:30px">Wrong or missing report code.</p>');
+  if (!checkCode(p.code)) {
+    return HtmlService.createHtmlOutput('<p style="font-family:sans-serif;padding:30px">Wrong or missing code.</p>');
   }
   var rows = logSheet().getDataRange().getValues().slice(1);
   var tz = Session.getScriptTimeZone();
@@ -87,12 +100,17 @@ function reportPage(p) {
 function doGet(e) {
   var p = (e && e.parameter) || {};
   if (p.type === 'prices') return pricesJson();
+  if (p.type === 'auth') return jsonOut({ ok: checkCode(p.code) });
   if (p.type === 'report') return reportPage(p);
   if (!p.name) return HtmlService.createHtmlOutput('No data.');
   var now = new Date();
 
-  // Staff print log
+  // Staff print log (needs the staff code)
   if (p.type === 'log') {
+    if (!checkCode(p.code)) {
+      return HtmlService.createHtmlOutput(
+        '<div style="font-family:sans-serif;text-align:center;padding:40px"><h2>Wrong code.</h2></div>');
+    }
     logSheet().appendRow([now, clean(p.name), clean(p.date), clean(p.forwho), clean(p.discount),
       clean(p.binding), clean(p.printing), clean(p.pages), clean(p.copies), clean(p.sheets), Number(p.total) || 0]);
     return HtmlService.createHtmlOutput(
@@ -107,7 +125,7 @@ function doGet(e) {
     var sh = ordersSheet();
     no = sh.getLastRow();
     sh.appendRow([no, now, STATUSES[0], clean(p.name), "'" + clean(p.contact), clean(p.date), clean(p.binding),
-      clean(p.printing), clean(p.pages), clean(p.copies), Number(p.total) || 0]);
+      clean(p.printing), clean(p.pages), clean(p.copies), Number(p.total) || 0, cleanLong(p.file)]);
     sh.getRange(sh.getLastRow(), 3).setDataValidation(
       SpreadsheetApp.newDataValidation().requireValueInList(STATUSES, true).build());
   } finally {
@@ -118,6 +136,7 @@ function doGet(e) {
   var body = 'New book printing order #' + num + '\n' +
     'Name: ' + clean(p.name) + '\n' +
     'Phone (WhatsApp/Telegram): ' + clean(p.contact) + '\n' +
+    (p.file ? 'File link: ' + cleanLong(p.file) + '\n' : '') +
     'Deadline: ' + clean(p.date) + '\n' +
     'Binding: ' + clean(p.binding) + '\n' +
     'Printing: ' + clean(p.printing) + '\n' +
@@ -143,6 +162,7 @@ function setup() {
 function testOrder() {
   doGet({ parameter: {
     type: 'order', name: 'Test Client', contact: '+992 501810696', date: '2026-12-01',
-    binding: 'Glue', printing: 'B&W, Single-sided', pages: '100', copies: '1', total: '85.00'
+    binding: 'Glue', printing: 'B&W, Single-sided', pages: '100', copies: '1', total: '85.00',
+    file: 'https://drive.google.com/file/d/test'
   }});
 }

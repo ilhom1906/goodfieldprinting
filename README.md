@@ -5,6 +5,7 @@ Static site (plain HTML, CSS, JavaScript, no build step): portfolio, price list,
 ## Files (upload ALL of them to the GitHub repository)
 - `index.html` - the whole site
 - `manifest.webmanifest`, `icon-180.png`, `icon-192.png`, `icon-512.png` - phone home-screen icon and full-screen mode
+- `og-image.jpg` - preview picture when the link is shared in messengers
 
 ## Where to edit
 - Prices (TJS): top of the `<script>` in index.html (`PRICE`, `CARD_PER_SHEET`, `CUT_A5`, `BINDING`)
