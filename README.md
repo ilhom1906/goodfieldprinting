@@ -1,6 +1,6 @@
 # Goodfield Printing
 
-Static site (plain HTML, CSS, JavaScript, no build step): portfolio, price list, order form, staff print log, RU/EN.
+Static site (plain HTML, CSS, JavaScript, no build step): portfolio, price list, order form, staff print log, RU/EN, light/dark theme.
 
 ## Files (upload ALL of them to the GitHub repository)
 - `index.html` - the whole site
@@ -13,3 +13,6 @@ Static site (plain HTML, CSS, JavaScript, no build step): portfolio, price list,
 
 ## Publish (free)
 GitHub Pages: upload the files to the repository root and commit.
+
+## Google Apps Script
+`apps-script.gs` is the full script (paste it into Extensions -> Apps Script of the Google Sheet). Prices are edited in the "Prices" tab; order status in the "Orders" tab; staff report needs the REPORT_CODE script property.

@@ -83,22 +83,18 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <p class="lead">One copy or a hundred. Choose the binding, see the price at once, send your order.</p>
 <p><a class="btn" href="#order">Place an order</a></p>
 
-<h2>What I offer</h2>
-<div class="card k1"><h3>Glue binding</h3><p class="muted">A clean, flat spine. Best for novels, study books and ministry materials.</p></div>
-<div class="card k2"><h3>Spiral binding</h3><p class="muted">Lies flat when open. Best for workbooks, notebooks and training guides.</p></div>
-<div class="card k3"><h3>Printouts and copies</h3><p class="muted">A single sheet, a document or a stack of copies. No binding needed.</p></div>
-
 <h2>Price list</h2>
 <div class="card k3">
 <div class="pl-h" style="margin-top:0">Printing, per A4 sheet</div>
-<div class="pl"><span>A4 B&amp;W, single-sided</span><b>0.80 TJS</b></div>
-<div class="pl"><span>A4 B&amp;W, double-sided</span><b>1.50 TJS</b></div>
-<div class="pl"><span>A4 Colour, single-sided</span><b>2.40 TJS</b></div>
-<div class="pl"><span>A4 Colour, double-sided</span><b>4.50 TJS</b></div>
+<div class="pl"><span>A4 B&amp;W, single-sided</span><b>{bw_single} TJS</b></div>
+<div class="pl"><span>A4 B&amp;W, double-sided</span><b>{bw_double} TJS</b></div>
+<div class="pl"><span>A4 Colour, single-sided</span><b>{colour_single} TJS</b></div>
+<div class="pl"><span>A4 Colour, double-sided</span><b>{colour_double} TJS</b></div>
 <div class="pl-h">Extras</div>
-<div class="pl"><span>Card printing</span><b>+1.00 TJS per sheet</b></div>
-<div class="pl"><span>Cutting to A5</span><b>2.00 TJS</b></div>
-<div class="pl"><span>Binding (optional)</span><b>5.00 TJS</b></div>
+<div class="pl"><span>Card printing</span><b>+{card} TJS per sheet</b></div>
+<div class="pl"><span>Cutting to A5</span><b>{cut} TJS</b></div>
+<div class="pl"><span>Glue binding</span><b>{glue} TJS</b></div>
+<div class="pl"><span>Spiral binding</span><b>{spiral} TJS</b></div>
 </div>
 
 <h2>How it works</h2>
@@ -118,7 +114,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 
 
 <div class="ocard">
-<label>Binding (5.00 TJS per copy; choose None for plain printouts)</label>
+<label>Binding (per copy; choose None for plain printouts)</label>
 <div class="seg" id="binding">
 <button data-v="Glue" class="on">Glue</button>
 <button data-v="Spiral">Spiral</button>
@@ -135,8 +131,8 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <button data-v="Single" class="on">Single-sided</button>
 <button data-v="Double">Double-sided</button>
 </div>
-<label class="chk"><input type="checkbox" id="card"> Print on card stock (+1.00 TJS per sheet)</label>
-<label class="chk"><input type="checkbox" id="cut"> Cut to A5 (+2.00 TJS per copy)</label>
+<label class="chk"><input type="checkbox" id="card"> Print on card stock (+{card} TJS per sheet)</label>
+<label class="chk"><input type="checkbox" id="cut"> Cut to A5 (+{cut} TJS per copy)</label>
 </div>
 <div class="ocard">
 <div class="row">
@@ -165,7 +161,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 <div><label for="forwho">Who's it for?</label><input id="forwho" placeholder="Write here" autocomplete="off"></div>
 <div><label for="worker">Who's going to do the work?</label><select id="worker"><option>Ilhom</option><option>Ed</option><option>Daniel</option><option>Teddy</option><option>Katie</option><option>Bookshop</option></select></div>
 </div>
-<p class="osmall">Staff price: the 30% discount is applied automatically.</p>
+<p class="osmall">Staff price: the {disc}% discount is applied automatically.</p>
 </div>
 <div class="ocard">
 <div class="osmall">Total price</div>
@@ -174,7 +170,7 @@ input:focus,select:focus,button:focus-visible,a:focus-visible{outline:3px solid 
 
 <div class="err" id="err"></div>
 <button class="obtn" id="send">Send order</button>
-<button class="obtn alt" id="copy">Copy order text</button>
+<button class="obtn alt" id="report" style="display:none">Staff report</button>
 <p class="osmall" id="msg"></p>
 
 
@@ -214,7 +210,7 @@ function figures(){
 function calc(){
   var f = figures();
   animateTotal(f.total);
-  $("tier").textContent = f.p > 0 ? f.sheets + t(" sheets x ") + f.perSheet.toFixed(2) + t(" + binding") + ($("cut").checked ? t(" + cutting") : "") + " = " + money(f.perBook) + t(" per copy") + (f.disc ? t(", before discount ") + money(f.gross) + t(", staff discount 30%") : "") : "";
+  $("tier").textContent = f.p > 0 ? f.sheets + t(" sheets x ") + f.perSheet.toFixed(2) + t(" + binding") + ($("cut").checked ? t(" + cutting") : "") + " = " + money(f.perBook) + t(" per copy") + (f.disc ? t(", before discount ") + money(f.gross) + t(", staff discount ") + Math.round(DISCOUNT * 100) + "%" : "") : "";
 }
 function printing(){
   return sel.color + ", " + sel.sides + "-sided" + ($("card").checked ? ", card stock" : "") + ($("cut").checked ? ", cut to A5" : "");
@@ -264,7 +260,7 @@ function valid(){
 function setMode(m){
   sel.mode = m;
   var log = m === "log";
-  swap(log ? [$("cust"), $("dlcard")] : [$("staffcard")], log ? [$("staffcard")] : [$("cust"), $("dlcard")]);
+  swap(log ? [$("cust"), $("dlcard")] : [$("staffcard"), $("report")], log ? [$("staffcard"), $("report")] : [$("cust"), $("dlcard")]);
   updateSend();
   $("err").textContent = ""; $("msg").textContent = ""; calc();
 }
@@ -308,10 +304,16 @@ document.querySelectorAll(".seg").forEach(function(seg){
 });
 var LANG = "en";
 var D = { ru:{} };
-([["Books, printed in small runs.", "Печать книг малыми тиражами."], ["One copy or a hundred. Choose the binding, see the price at once, send your order.", "Одна копия или сто. Выберите переплёт, сразу увидите цену и отправьте заказ."], ["Place an order", "Сделать заказ"], ["What I offer", "Что я предлагаю"], ["Glue binding", "Клеевой переплёт"], ["A clean, flat spine. Best for novels, study books and ministry materials.", "Аккуратный ровный корешок. Подходит для романов, учебников и материалов для служения."], ["Spiral binding", "Переплёт на пружину"], ["Lies flat when open. Best for workbooks, notebooks and training guides.", "Раскрывается ровно. Подходит для рабочих тетрадей, блокнотов и учебных пособий."], ["Printouts and copies", "Распечатки и копии"], ["A single sheet, a document or a stack of copies. No binding needed.", "Один лист, документ или стопка копий. Переплёт не нужен."], ["Price list", "Прайс-лист"], ["Printing, per A4 sheet", "Печать, за лист A4"], ["A4 B&W, single-sided", "A4 чёрно-белая, односторонняя"], ["A4 B&W, double-sided", "A4 чёрно-белая, двусторонняя"], ["A4 Colour, single-sided", "A4 цветная, односторонняя"], ["A4 Colour, double-sided", "A4 цветная, двусторонняя"], ["Extras", "Дополнительно"], ["Card printing", "Печать на картоне"], ["+1.00 TJS per sheet", "+1.00 TJS за лист"], ["Cutting to A5", "Резка до A5"], ["Binding (optional)", "Переплёт (по желанию)"], ["How it works", "Как это работает"], ["Choose the printing options and enter the number of pages. The price is shown right away.", "Выберите параметры печати и укажите число страниц. Цена показывается сразу."], ["Pick your deadline and send the order.", "Выберите срок и отправьте заказ."], ["I confirm the details and start printing.", "Я подтверждаю детали и начинаю печать."], ["Customer order", "Заказ клиента"], ["Staff print log", "Журнал печати сотрудников"], ["Binding (5.00 TJS per copy; choose None for plain printouts)", "Переплёт (5.00 TJS за копию; выберите «Нет» для обычной распечатки)"], ["Glue", "Клей"], ["Spiral", "Пружина"], ["None", "Нет"], ["Printing", "Печать"], ["B&W", "Ч/Б"], ["Colour", "Цвет"], ["Single-sided", "Односторонняя"], ["Double-sided", "Двусторонняя"], ["Print on card stock (+1.00 TJS per sheet)", "Печать на картоне (+1.00 TJS за лист)"], ["Cut to A5 (+2.00 TJS per copy)", "Резка до A5 (+2.00 TJS за копию)"], ["Pages per copy (A4)", "Страниц в копии (A4)"], ["Number of copies", "Количество копий"], ["First name", "Имя"], ["Last name", "Фамилия"], ["Phone number (linked to WhatsApp or Telegram)", "Номер телефона (привязанный к WhatsApp или Telegram)"], ["Type the number without the country code. Another country? Choose Other and type the full number starting with +.", "Введите номер без кода страны. Другая страна? Выберите «Другая» и введите номер полностью, начиная с +."], ["Other (type full number with +)", "Другая (номер полностью с +)"], ["Deadline", "Срок"], ["Date", "Дата"], ["Who's it for?", "Для кого?"], ["Who's going to do the work?", "Кто будет выполнять работу?"], ["Staff price: the 30% discount is applied automatically.", "Цена для сотрудников: скидка 30% применяется автоматически."], ["Total price", "Итого"], ["Copy order text", "Скопировать текст заказа"], ["Phone number", "Номер телефона"], ["Write here", "Напишите здесь"], [" sheets x ", " листов x "], [" + binding", " + переплёт"], [" + cutting", " + резка"], [" per copy", " за копию"], [", before discount ", ", до скидки "], [", staff discount 30%", ", скидка сотрудникам 30%"], ["Please enter first and last name.", "Введите имя и фамилию."], ["Please enter a valid phone number linked to WhatsApp or Telegram.", "Введите корректный номер телефона, привязанный к WhatsApp или Telegram."], ["Please enter the number of pages.", "Укажите количество страниц."], ["Please enter the number of copies.", "Укажите количество копий."], ["Please choose a deadline.", "Выберите срок."], ["Please choose the date.", "Выберите дату."], ["Please enter who it is for.", "Укажите, для кого."], ["Save print log", "Сохранить запись"], ["Send order", "Отправить заказ"], ["Copied.", "Скопировано."], ["Copy failed.", "Не удалось скопировать."], ["Copy is not available here.", "Копирование здесь недоступно."]]).forEach(function(r){ D.ru[r[0]] = r[1]; });
+([["Books, printed in small runs.", "Печать книг малыми тиражами."], ["One copy or a hundred. Choose the binding, see the price at once, send your order.", "Одна копия или сто. Выберите переплёт, сразу увидите цену и отправьте заказ."], ["Place an order", "Сделать заказ"], ["Glue binding", "Клеевой переплёт"], ["Spiral binding", "Переплёт на пружину"], ["Price list", "Прайс-лист"], ["Printing, per A4 sheet", "Печать, за лист A4"], ["A4 B&W, single-sided", "A4 чёрно-белая, односторонняя"], ["A4 B&W, double-sided", "A4 чёрно-белая, двусторонняя"], ["A4 Colour, single-sided", "A4 цветная, односторонняя"], ["A4 Colour, double-sided", "A4 цветная, двусторонняя"], ["Extras", "Дополнительно"], ["Card printing", "Печать на картоне"], ["Cutting to A5", "Резка до A5"], ["How it works", "Как это работает"], ["Choose the printing options and enter the number of pages. The price is shown right away.", "Выберите параметры печати и укажите число страниц. Цена показывается сразу."], ["Pick your deadline and send the order.", "Выберите срок и отправьте заказ."], ["I confirm the details and start printing.", "Я подтверждаю детали и начинаю печать."], ["Customer order", "Заказ клиента"], ["Staff print log", "Журнал печати сотрудников"], ["Glue", "Клей"], ["Spiral", "Пружина"], ["None", "Нет"], ["Printing", "Печать"], ["B&W", "Ч/Б"], ["Colour", "Цвет"], ["Single-sided", "Односторонняя"], ["Double-sided", "Двусторонняя"], ["Pages per copy (A4)", "Страниц в копии (A4)"], ["Number of copies", "Количество копий"], ["First name", "Имя"], ["Last name", "Фамилия"], ["Phone number (linked to WhatsApp or Telegram)", "Номер телефона (привязанный к WhatsApp или Telegram)"], ["Type the number without the country code. Another country? Choose Other and type the full number starting with +.", "Введите номер без кода страны. Другая страна? Выберите «Другая» и введите номер полностью, начиная с +."], ["Other (type full number with +)", "Другая (номер полностью с +)"], ["Deadline", "Срок"], ["Date", "Дата"], ["Who's it for?", "Для кого?"], ["Who's going to do the work?", "Кто будет выполнять работу?"], ["Total price", "Итого"], ["Phone number", "Номер телефона"], ["Write here", "Напишите здесь"], [" sheets x ", " листов x "], [" + binding", " + переплёт"], [" + cutting", " + резка"], [" per copy", " за копию"], [", before discount ", ", до скидки "], ["Please enter first and last name.", "Введите имя и фамилию."], ["Please enter a valid phone number linked to WhatsApp or Telegram.", "Введите корректный номер телефона, привязанный к WhatsApp или Telegram."], ["Please enter the number of pages.", "Укажите количество страниц."], ["Please enter the number of copies.", "Укажите количество копий."], ["Please choose a deadline.", "Выберите срок."], ["Please choose the date.", "Выберите дату."], ["Please enter who it is for.", "Укажите, для кого."], ["Save print log", "Сохранить запись"], ["Send order", "Отправить заказ"], ["+{card} TJS per sheet", "+{card} TJS за лист"], ["Binding (per copy; choose None for plain printouts)", "Переплёт (за копию; выберите «Нет» для обычной распечатки)"], ["Print on card stock (+{card} TJS per sheet)", "Печать на картоне (+{card} TJS за лист)"], ["Cut to A5 (+{cut} TJS per copy)", "Резка до A5 (+{cut} TJS за копию)"], ["Staff price: the {disc}% discount is applied automatically.", "Цена для сотрудников: скидка {disc}% применяется автоматически."], [", staff discount ", ", скидка сотрудникам "], ["Staff report", "Отчёт по сотрудникам"], ["Enter the report code", "Введите код отчёта"], ["The report works after the Google script is connected.", "Отчёт заработает после подключения скрипта Google."]]).forEach(function(r){ D.ru[r[0]] = r[1]; });
 function t(s){ var d = D[LANG]; return (d && d[s]) || s; }
 function updateSend(){ $("send").textContent = t(sel.mode === "log" ? "Save print log" : "Send order"); }
 var orig = typeof WeakMap !== "undefined" ? new WeakMap() : null;
+function tok(k){
+  if(k === "disc") return String(Math.round(DISCOUNT * 100));
+  var v = { bw_single: PRICE["B&W"].Single, bw_double: PRICE["B&W"].Double, colour_single: PRICE["Colour"].Single, colour_double: PRICE["Colour"].Double, card: CARD_PER_SHEET, cut: CUT_A5, glue: BINDING.Glue, spiral: BINDING.Spiral }[k];
+  return v === undefined ? null : v.toFixed(2);
+}
+function fillTokens(str){ return str.replace(/\{(\w+)\}/g, function(m, k){ var v = tok(k); return v === null ? m : v; }); }
 function applyLang(){
   document.documentElement.lang = LANG;
   if(document.createTreeWalker && orig){
@@ -322,7 +324,7 @@ function applyLang(){
       if(!orig.has(n)) orig.set(n, n.nodeValue);
       var o = orig.get(n), key = o.trim();
       if(!key) continue;
-      var tr = t(key);
+      var tr = fillTokens(t(key));
       n.nodeValue = o.replace(key, function(){ return tr; });
     }
   }
@@ -385,14 +387,31 @@ $("send").onclick = function(){
   }
   window.open(url, "_blank");
 };
-$("copy").onclick = function(){
-  if(!valid()) return;
-  var t = text();
-  if(navigator.clipboard){ navigator.clipboard.writeText(t).then(function(){ $("msg").textContent = t("Copied."); }, function(){ $("msg").textContent = t("Copy failed."); }); }
-  else { $("msg").textContent = t("Copy is not available here."); }
+$("report").onclick = function(){
+  if(!SCRIPT_URL){ $("msg").textContent = t("The report works after the Google script is connected."); return; }
+  var code = window.prompt(t("Enter the report code"));
+  if(!code) return;
+  window.open(SCRIPT_URL + "?type=report&code=" + encodeURIComponent(code), "_blank");
 };
+function applyPrices(o){
+  function n(v){ v = parseFloat(v); return isFinite(v) && v >= 0 ? v : null; }
+  var x;
+  if((x = n(o.bw_single)) !== null) PRICE["B&W"].Single = x;
+  if((x = n(o.bw_double)) !== null) PRICE["B&W"].Double = x;
+  if((x = n(o.colour_single)) !== null) PRICE["Colour"].Single = x;
+  if((x = n(o.colour_double)) !== null) PRICE["Colour"].Double = x;
+  if((x = n(o.card_per_sheet)) !== null) CARD_PER_SHEET = x;
+  if((x = n(o.cut_a5)) !== null) CUT_A5 = x;
+  if((x = n(o.binding_glue)) !== null) BINDING.Glue = x;
+  if((x = n(o.binding_spiral)) !== null) BINDING.Spiral = x;
+  if((x = n(o.staff_discount_percent)) !== null && x <= 100) DISCOUNT = x / 100;
+  applyLang();
+}
 applyLang();
 placeAll();
+if(SCRIPT_URL && window.fetch){
+  fetch(SCRIPT_URL + "?type=prices").then(function(r){ return r.json(); }).then(applyPrices).catch(function(){});
+}
 window.addEventListener("load", placeAll);
 window.addEventListener("resize", placeAll);
 requestAnimationFrame(function(){ document.body.classList.add("ready"); });
