@@ -87,6 +87,23 @@ h1 span{display:block}
 .arr{transition:transform .3s cubic-bezier(.32,.72,0,1)}
 .btn:hover .arr{transform:translateX(5px)}
 .tag{text-align:center;font-size:11.5px;font-weight:600;letter-spacing:.16em;color:var(--muted);margin:0}
+.part{border:1px solid var(--edge);border-radius:18px;padding:12px;margin:0 0 12px;background:var(--field)}
+.parthead{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-weight:600}
+.pname{flex:1;min-width:0;padding:9px 12px;font-size:15px}
+.prm{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--edge);background:var(--field);color:var(--ink);font-size:20px;line-height:1;padding:0}
+.pline{margin:6px 0 0}
+.obtn.sm{width:auto;flex:1;padding:11px 14px;font-size:14px;margin-top:0}
+#mode button{font-size:14px;line-height:1.2;padding:10px 6px}
+.po{padding:12px 0;border-top:1px solid var(--rule)}
+.po:first-child{border-top:0}
+.pamt{display:flex;gap:8px;margin-top:8px}
+.pamt input{flex:1;min-width:0;padding:10px 12px}
+.pperson{margin-top:12px;padding:12px 14px;border:1px solid var(--edge);border-radius:18px;background:var(--field)}
+.phead{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.mrecs{margin-top:8px}
+.mrec{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:6px 0;font-size:14px}
+.mrec .obtn.sm{flex:none;padding:7px 10px;font-size:13px}
+.hide{display:none}
 </style>
 <link rel="icon" href="data:image/jpeg;base64,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">
 <meta name="description" content="Печать книг и документов. Выберите параметры, сразу увидите цену и отправьте заказ. · Book and document printing: see the price, send your order.">
@@ -138,38 +155,11 @@ h1 span{display:block}
 <div class="seg" id="mode">
 <button data-v="order" class="on">Customer order</button>
 <button data-v="log">Staff print log</button>
+<button data-v="pay">Payments</button>
 </div>
 </div>
 
-
-<div class="ocard">
-<label>Binding (per copy; choose None for plain printouts)</label>
-<div class="seg" id="binding">
-<button data-v="Glue" class="on">Glue</button>
-<button data-v="Spiral">Spiral</button>
-<button data-v="None">None</button>
-</div>
-</div>
-<div class="ocard">
-<label>Printing</label>
-<div class="seg" id="color">
-<button data-v="B&W" class="on">B&amp;W</button>
-<button data-v="Colour">Colour</button>
-</div>
-<div class="seg gap" id="sides">
-<button data-v="Single" class="on">Single-sided</button>
-<button data-v="Double">Double-sided</button>
-</div>
-<label class="chk"><input type="checkbox" id="card"> Print on card stock (+{card} TJS per sheet)</label>
-<label class="chk"><input type="checkbox" id="cut"> Cut to A5 (+{cut} TJS per copy)</label>
-</div>
-<div class="ocard">
-<div class="row">
-<div><label for="pages">Pages per copy (A4)</label><input id="pages" type="number" inputmode="numeric" min="1" value="100"></div>
-<div><label for="copies">Number of copies</label><input id="copies" type="number" inputmode="numeric" min="1" value="1"></div>
-</div>
-<p class="osmall" id="tier"></p>
-</div>
+<div id="entry">
 <div class="ocard" id="cust">
 <div class="row">
 <div><label for="fn">First name</label><input id="fn" autocomplete="given-name"></div>
@@ -192,26 +182,49 @@ h1 span{display:block}
 </div>
 <p class="osmall">Staff price: the {disc}% discount is applied automatically.</p>
 </div>
+<div class="ocard" id="partsbox">
+<label>Parts of the order</label>
+<div id="parts"></div>
+<div class="row" style="gap:8px;margin-top:4px"><button type="button" class="obtn alt sm" id="addpart">+ Add a part</button><button type="button" class="obtn alt sm" id="addcover">+ Add card cover</button></div>
+</div>
+<div class="ocard">
+<label>Binding (per copy; choose None for plain printouts)</label>
+<div class="seg" id="binding">
+<button data-v="Glue" class="on">Glue</button>
+<button data-v="Spiral">Spiral</button>
+<button data-v="None">None</button>
+</div>
+<label class="chk"><input type="checkbox" id="cut"> Cut to A5 (+{cut} TJS per copy)</label>
+<div style="margin-top:12px"><label for="copies">Number of copies</label><input id="copies" type="number" inputmode="numeric" min="1" value="1"></div>
+</div>
 <div class="ocard">
 <div class="osmall">Total price</div>
 <div class="price" id="total">0.00 TJS</div>
+<p class="osmall" id="tier"></p>
 </div>
 
 <div class="err" id="err"></div>
 <button class="obtn" id="send">Send order</button>
 <button class="obtn alt" id="report" style="display:none">Staff report</button>
 <p class="osmall" id="msg"></p>
-
-
 </div>
+
+<div id="payview" style="display:none">
+<div class="ocard">
+<div class="seg" id="paytab"><button data-v="orders" class="on">Customer orders</button><button data-v="debts">Staff debts</button></div>
+<div id="payfilterwrap" style="margin-top:10px"><div class="seg" id="payfilter"><button data-v="unpaid" class="on">Unpaid</button><button data-v="paid">Paid</button></div></div>
+</div>
+<div class="ocard"><div id="paylist"></div><button class="obtn alt" id="payrefresh" type="button" style="margin-top:12px">Refresh</button></div>
+</div>
+
 <div id="gate" class="gate" style="display:none"><div class="ocard gatebox"><h3>Staff access</h3><p class="osmall" style="margin:0 0 12px">Enter the staff code.</p><input id="gc" type="password" autocomplete="off"><div class="err" id="ge" style="margin-top:8px"></div><div class="row" style="gap:8px"><button class="obtn alt" id="gx" type="button">Cancel</button><button class="obtn" id="go" type="button">Unlock</button></div></div></div>
 <script>
-// ---- PRICE LIST (TJS): change the numbers here ----
+// ---- PRICE LIST (TJS): change the numbers here (or in the Prices tab of the Google Sheet) ----
 var PRICE = {                       // price per printed A4 sheet
   "B&W":   { Single: 0.80, Double: 1.50 },
   "Colour":{ Single: 2.40, Double: 4.50 }
 };
-var CARD_PER_SHEET = 1.00;          // extra per sheet when printed on card stock
+var CARD_PER_SHEET = 1.00;          // extra per sheet when a part is printed on card stock
 var CUT_A5 = 2.00;                  // cutting to A5, per copy
 var BINDING = { Glue: 5.00, Spiral: 5.00, None: 0.00 }; // per copy
 var DISCOUNT = 0.30;                // 30% staff discount (print log only)
@@ -219,90 +232,100 @@ var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxW4bRDwYuXdcSsiFSKoIQ
 var EMAIL = "caps.ilhom@gmail.com"; // used only until SCRIPT_URL is set
 // ----------------------------------------------------
 
-var sel = { binding: "Glue", color: "B&W", sides: "Single", mode: "order" };
+var sel = { binding: "Glue", mode: "order" };
 var $ = function(id){ return document.getElementById(id); };
 var dl = $("dl");
 var iso = function(d){ return d.toISOString().slice(0,10); };
 var tm = new Date(); tm.setDate(tm.getDate()+1); dl.min = iso(tm);
 $("pd").value = iso(new Date());
 function money(n){ return n.toFixed(2) + " TJS"; }
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
 
-function figures(){
-  var p = parseInt($("pages").value,10) || 0;
-  var c = parseInt($("copies").value,10) || 0;
-  var sheets = sel.sides === "Double" ? Math.ceil(p/2) : p;
-  var perSheet = PRICE[sel.color][sel.sides] + ($("card").checked ? CARD_PER_SHEET : 0);
-  var perBook = sheets * perSheet + ($("cut").checked ? CUT_A5 : 0) + BINDING[sel.binding];
-  var disc = sel.mode === "log" ? DISCOUNT : 0;
-  var gross = (p>0&&c>0) ? c*perBook : 0;
-  return { p:p, c:c, sheets:sheets, perSheet:perSheet, perBook:perBook, disc:disc, gross:gross, total: Math.round(gross*(1-disc)*100)/100 };
+// ---------- language ----------
+var LANG = "en";
+var D = { ru:{} };
+([["Place an order", "Сделать заказ"], ["Glue binding", "Клеевой переплёт"], ["Spiral binding", "Переплёт на пружину"], ["Price list", "Прайс-лист"], ["Printing, per A4 sheet", "Печать, за лист A4"], ["A4 B&W, single-sided", "A4 чёрно-белая, односторонняя"], ["A4 B&W, double-sided", "A4 чёрно-белая, двусторонняя"], ["A4 Colour, single-sided", "A4 цветная, односторонняя"], ["A4 Colour, double-sided", "A4 цветная, двусторонняя"], ["Extras", "Дополнительно"], ["Card printing", "Печать на картоне"], ["Cutting to A5", "Резка до A5"], ["Customer order", "Заказ клиента"], ["Staff print log", "Журнал печати"], ["Glue", "Клей"], ["Spiral", "Пружина"], ["None", "Нет"], ["B&W", "Ч/Б"], ["Colour", "Цвет"], ["Single-sided", "Односторонняя"], ["Double-sided", "Двусторонняя"], ["Number of copies", "Количество копий"], ["First name", "Имя"], ["Last name", "Фамилия"], ["Phone number (linked to WhatsApp or Telegram)", "Номер телефона (привязанный к WhatsApp или Telegram)"], ["Type the number without the country code. Another country? Choose Other and type the full number starting with +.", "Введите номер без кода страны. Другая страна? Выберите «Другая» и введите номер полностью, начиная с +."], ["Other (type full number with +)", "Другая (номер полностью с +)"], ["Deadline", "Срок"], ["Date", "Дата"], ["Who's it for?", "Для кого?"], ["Who's going to do the work?", "Кто будет выполнять работу?"], ["Total price", "Итого"], ["Phone number", "Номер телефона"], ["Write here", "Напишите здесь"], [" sheets x ", " листов x "], [" + binding", " + переплёт"], [" + cutting", " + резка"], [" per copy", " за копию"], [", before discount ", ", до скидки "], ["Please enter first and last name.", "Введите имя и фамилию."], ["Please enter a valid phone number linked to WhatsApp or Telegram.", "Введите корректный номер телефона, привязанный к WhatsApp или Telegram."], ["Please enter the number of pages.", "Укажите количество страниц."], ["Please enter the number of copies.", "Укажите количество копий."], ["Please choose a deadline.", "Выберите срок."], ["Please choose the date.", "Выберите дату."], ["Please enter who it is for.", "Укажите, для кого."], ["Save print log", "Сохранить запись"], ["Send order", "Отправить заказ"], ["+{card} TJS per sheet", "+{card} TJS за лист"], ["Binding (per copy; choose None for plain printouts)", "Переплёт (за копию; выберите «Нет» для обычной распечатки)"], ["Cut to A5 (+{cut} TJS per copy)", "Резка до A5 (+{cut} TJS за копию)"], ["Staff price: the {disc}% discount is applied automatically.", "Цена для сотрудников: скидка {disc}% применяется автоматически."], [", staff discount ", ", скидка сотрудникам "], ["Staff report", "Отчёт по сотрудникам"], ["The report works after the Google script is connected.", "Отчёт заработает после подключения скрипта Google."], ["Staff access", "Доступ сотрудников"], ["Enter the staff code.", "Введите код сотрудника."], ["Cancel", "Отмена"], ["Unlock", "Открыть"], ["Wrong code.", "Неверный код."], ["Could not check the code. Check your connection and try again.", "Не удалось проверить код. Проверьте интернет и попробуйте снова."], ["Small Runs.", "Малые тиражи."], ["Big Ideas.", "Большие идеи."], ["Choose your format, see your price and bring your book to life.", "Выберите формат, сразу увидите цену и оживите свою книгу."], ["Start Your Order", "Оформить заказ"], ["ONE COPY OR A HUNDRED — PRINTED WITH CARE", "ОДНА КОПИЯ ИЛИ СТО — НАПЕЧАТАНО С ЗАБОТОЙ"], ["Payments", "Оплаты"], ["Parts of the order", "Состав заказа"], ["Part", "Часть"], ["Name, e.g. Cover", "Название, например Обложка"], ["Paper", "Бумага"], ["Card stock", "Картон"], ["Pages (A4)", "Страниц (A4)"], ["+ Add a part", "+ Добавить часть"], ["+ Add card cover", "+ Добавить обложку из картона"], ["Cover", "Обложка"], ["Each copy: ", "Одна копия: "], [" · total sheets: ", " · всего листов: "], ["Customer orders", "Заказы клиентов"], ["Staff debts", "Долги сотрудников"], ["Unpaid", "Не оплачено"], ["Paid", "Оплачено"], ["Partly paid", "Частично оплачено"], ["Refresh", "Обновить"], ["Loading…", "Загрузка…"], ["Could not load. Check your connection and try again.", "Не удалось загрузить. Проверьте интернет и попробуйте снова."], ["Could not save. Check your connection and try again.", "Не удалось сохранить. Проверьте интернет и попробуйте снова."], ["No orders here.", "Здесь нет заказов."], ["Total", "Сумма"], ["Left", "Осталось"], ["Left to collect", "Осталось получить"], ["Record payment", "Записать оплату"], ["No unpaid debts.", "Нет неоплаченных долгов."], ["Total unpaid", "Всего не оплачено"], ["records", "записей"], ["Mark month paid", "Отметить месяц оплаченным"], ["Details", "Подробнее"], ["Mark paid", "Отметить оплаченным"], ["Mark as paid?", "Отметить как оплаченное?"], ["Accepted", "Принят"], ["Printing", "Печатается"], ["Ready", "Готов"], ["Delivered", "Выдан"], ["Cancelled", "Отменён"]]).forEach(function(r){ D.ru[r[0]] = r[1]; });
+function t(s){ var d = D[LANG]; return (d && d[s]) || s; }
+function tok(k){
+  if(k === "disc") return String(Math.round(DISCOUNT * 100));
+  var v = { bw_single: PRICE["B&W"].Single, bw_double: PRICE["B&W"].Double, colour_single: PRICE["Colour"].Single, colour_double: PRICE["Colour"].Double, card: CARD_PER_SHEET, cut: CUT_A5, glue: BINDING.Glue, spiral: BINDING.Spiral }[k];
+  return v === undefined ? null : v.toFixed(2);
 }
-function calc(){
-  var f = figures();
-  animateTotal(f.total);
-  $("tier").textContent = f.p > 0 ? f.sheets + t(" sheets x ") + f.perSheet.toFixed(2) + t(" + binding") + ($("cut").checked ? t(" + cutting") : "") + " = " + money(f.perBook) + t(" per copy") + (f.disc ? t(", before discount ") + money(f.gross) + t(", staff discount ") + Math.round(DISCOUNT * 100) + "%" : "") : "";
+function fillTokens(str){ return str.replace(/\{(\w+)\}/g, function(m, k){ var v = tok(k); return v === null ? m : v; }); }
+var orig = typeof WeakMap !== "undefined" ? new WeakMap() : null;
+var SKIP = "#tier,#total,#err,#msg,#send,#ge,#paylist,.pline";
+function translate(root){
+  if(document.createTreeWalker && orig){
+    var tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), n;
+    while((n = tw.nextNode())){
+      var p = n.parentNode;
+      if(!p || /^(SCRIPT|STYLE)$/.test(p.nodeName) || (p.closest && p.closest(SKIP))) continue;
+      if(!orig.has(n)) orig.set(n, n.nodeValue);
+      var o = orig.get(n), key = o.trim();
+      if(!key) continue;
+      var tr = fillTokens(t(key));
+      n.nodeValue = o.replace(key, function(){ return tr; });
+    }
+  }
+  root.querySelectorAll("[placeholder]").forEach(function(el){
+    if(!el.dataset.ph0) el.dataset.ph0 = el.getAttribute("placeholder");
+    el.setAttribute("placeholder", t(el.dataset.ph0));
+  });
 }
-function printing(){
-  return sel.color + ", " + sel.sides + "-sided" + ($("card").checked ? ", card stock" : "") + ($("cut").checked ? ", cut to A5" : "");
-}
-function data(){
-  var f = figures();
-  var isLog = sel.mode === "log";
-  return {
-    type: sel.mode,
-    name: isLog ? $("worker").value : ($("fn").value.trim() + " " + $("ln").value.trim()),
-    date: isLog ? $("pd").value : dl.value,
-    binding: sel.binding, printing: printing(),
-    pages: f.p, copies: f.c, sheets: f.sheets * f.c, total: f.total.toFixed(2),
-    forwho: isLog ? $("forwho").value.trim() : "", worker: isLog ? $("worker").value : "", contact: isLog ? "" : fullPhone(), code: isLog ? STAFF_CODE : "", discount: f.disc ? "30%" : "0%"
-  };
-}
-function text(){
-  var d = data();
-  return (d.type === "log" ? "Print log\nWork by: " : "New book printing order\nName: ") + d.name + "\n" +
-    (d.type === "order" ? "Phone (WhatsApp/Telegram): " + d.contact + "\n" : "") +
-    (d.type === "log" ? "Date: " : "Deadline: ") + d.date + "\n" +
-    (d.type === "log" ? "For: " + d.forwho + "\nDiscount: " + d.discount + "\n" : "") +
-    "Binding: " + d.binding + "\nPrinting: " + d.printing + "\n" +
-    "Pages per copy: " + d.pages + "\nNumber of copies: " + d.copies + "\n" +
-    "Total sheets: " + d.sheets + "\nTotal: " + money(parseFloat(d.total));
-}
-function fullPhone(){
-  var raw = $("ph").value.trim(), code = $("cc").value;
-  if(!raw) return "";
-  if(raw.charAt(0) === "+") return "+" + raw.replace(/\D/g,"");
-  if(raw.indexOf("00") === 0) return "+" + raw.replace(/\D/g,"").slice(2);
-  var d = raw.replace(/\D/g,"").replace(/^0+/,"");
-  return code ? code + " " + d : "+" + d;
-}
-function valid(){
-  var e = "";
-  if(sel.mode === "order" && (!$("fn").value.trim() || !$("ln").value.trim())) e = t("Please enter first and last name.");
-  else if(sel.mode === "order" && (function(n){ return n < 8 || n > 15; })(fullPhone().replace(/\D/g,"").length)) e = t("Please enter a valid phone number linked to WhatsApp or Telegram.");
-  else if(!(parseInt($("pages").value,10) > 0)) e = t("Please enter the number of pages.");
-  else if(!(parseInt($("copies").value,10) > 0)) e = t("Please enter the number of copies.");
-  else if(sel.mode === "order" && !dl.value) e = t("Please choose a deadline.");
-  else if(sel.mode === "log" && !$("pd").value) e = t("Please choose the date.");
-  else if(sel.mode === "log" && !$("forwho").value.trim()) e = t("Please enter who it is for.");
-  $("err").textContent = e;
-  return !e;
-}
-function setMode(m){
-  sel.mode = m;
-  var log = m === "log";
-  swap(log ? [$("cust"), $("dlcard")] : [$("staffcard"), $("report")], log ? [$("staffcard"), $("report")] : [$("cust"), $("dlcard")]);
+function updateSend(){ $("send").textContent = t(sel.mode === "log" ? "Save print log" : "Send order"); }
+function applyLang(){
+  document.documentElement.lang = LANG;
+  translate(document.body);
   updateSend();
-  $("err").textContent = ""; $("msg").textContent = ""; calc();
+  $("err").textContent = ""; $("msg").textContent = "";
+  calc();
+  if(sel.mode === "pay") renderPay();
+  placeAll();
+  if(window.requestAnimationFrame) requestAnimationFrame(placeAll);
 }
+function setLang(l){
+  LANG = l;
+  try{ localStorage.setItem("gf_lang", l); }catch(e){}
+  applyLang();
+}
+
+// ---------- segmented controls with a sliding thumb ----------
+function ensureThumb(seg){
+  if(!seg.querySelector(".thumb")){
+    var th = document.createElement("span"); th.className = "thumb"; seg.insertBefore(th, seg.firstChild);
+  }
+}
+function place(seg){
+  var th = seg.querySelector(".thumb"), a = seg.querySelector("button.on");
+  if(!th || !a) return;
+  var first = !th.dataset.p && a.offsetWidth > 0;
+  if(first) th.style.transition = "none";
+  th.style.width = a.offsetWidth + "px";
+  th.style.transform = "translateX(" + a.offsetLeft + "px)";
+  if(first){ void th.offsetWidth; th.style.transition = ""; th.dataset.p = "1"; }
+}
+function placeAll(){ document.querySelectorAll(".seg").forEach(place); }
+function wireSeg(seg, cb){
+  ensureThumb(seg);
+  seg.querySelectorAll("button").forEach(function(b){
+    b.onclick = function(){
+      if(cb(b.dataset.v, b) === false) return;
+      seg.querySelectorAll("button").forEach(function(x){ x.classList.remove("on"); });
+      b.classList.add("on"); place(seg);
+    };
+  });
+}
+
+// ---------- animations ----------
 var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 var shown = 0, raf = 0;
 function animateTotal(to){
   if(raf) cancelAnimationFrame(raf);
   if(reduce || !window.requestAnimationFrame){ shown = to; $("total").textContent = money(to); return; }
   var from = shown, t0 = null, dur = 400;
-  function step(t){
-    if(t0 === null) t0 = t;
-    var k = Math.min(1, (t - t0) / dur); k = 1 - Math.pow(1 - k, 3);
+  function step(ts){
+    if(t0 === null) t0 = ts;
+    var k = Math.min(1, (ts - t0) / dur); k = 1 - Math.pow(1 - k, 3);
     shown = from + (to - from) * k;
     $("total").textContent = money(k < 1 ? shown : to);
     if(k < 1) raf = requestAnimationFrame(step); else shown = to;
@@ -322,63 +345,133 @@ function swap(hide, show){
     if(was){ el.classList.remove("show"); void el.offsetWidth; el.classList.add("show"); }
   });
 }
-function place(seg){
-  var t = seg.querySelector(".thumb"), a = seg.querySelector("button.on");
-  if(!t || !a) return;
-  t.style.width = a.offsetWidth + "px";
-  t.style.transform = "translateX(" + a.offsetLeft + "px)";
+
+// ---------- the parts of an order (cover, inside pages, ...) ----------
+var parts = [], partSeq = 0;
+function addPart(o, atTop){
+  var p = { id: ++partSeq, name: "", paper: "Paper", color: "B&W", sides: "Single", pages: "100" };
+  for(var k in o) p[k] = o[k];
+  if(atTop) parts.unshift(p); else parts.push(p);
+  renderParts();
 }
-function placeAll(){ document.querySelectorAll(".seg").forEach(place); }
-document.querySelectorAll(".seg").forEach(function(seg){
-  var t = document.createElement("span"); t.className = "thumb"; seg.insertBefore(t, seg.firstChild);
-});
-var LANG = "en";
-var D = { ru:{} };
-([["Place an order", "Сделать заказ"], ["Glue binding", "Клеевой переплёт"], ["Spiral binding", "Переплёт на пружину"], ["Price list", "Прайс-лист"], ["Printing, per A4 sheet", "Печать, за лист A4"], ["A4 B&W, single-sided", "A4 чёрно-белая, односторонняя"], ["A4 B&W, double-sided", "A4 чёрно-белая, двусторонняя"], ["A4 Colour, single-sided", "A4 цветная, односторонняя"], ["A4 Colour, double-sided", "A4 цветная, двусторонняя"], ["Extras", "Дополнительно"], ["Card printing", "Печать на картоне"], ["Cutting to A5", "Резка до A5"], ["Customer order", "Заказ клиента"], ["Staff print log", "Журнал печати сотрудников"], ["Glue", "Клей"], ["Spiral", "Пружина"], ["None", "Нет"], ["Printing", "Печать"], ["B&W", "Ч/Б"], ["Colour", "Цвет"], ["Single-sided", "Односторонняя"], ["Double-sided", "Двусторонняя"], ["Pages per copy (A4)", "Страниц в копии (A4)"], ["Number of copies", "Количество копий"], ["First name", "Имя"], ["Last name", "Фамилия"], ["Phone number (linked to WhatsApp or Telegram)", "Номер телефона (привязанный к WhatsApp или Telegram)"], ["Type the number without the country code. Another country? Choose Other and type the full number starting with +.", "Введите номер без кода страны. Другая страна? Выберите «Другая» и введите номер полностью, начиная с +."], ["Other (type full number with +)", "Другая (номер полностью с +)"], ["Deadline", "Срок"], ["Date", "Дата"], ["Who's it for?", "Для кого?"], ["Who's going to do the work?", "Кто будет выполнять работу?"], ["Total price", "Итого"], ["Phone number", "Номер телефона"], ["Write here", "Напишите здесь"], [" sheets x ", " листов x "], [" + binding", " + переплёт"], [" + cutting", " + резка"], [" per copy", " за копию"], [", before discount ", ", до скидки "], ["Please enter first and last name.", "Введите имя и фамилию."], ["Please enter a valid phone number linked to WhatsApp or Telegram.", "Введите корректный номер телефона, привязанный к WhatsApp или Telegram."], ["Please enter the number of pages.", "Укажите количество страниц."], ["Please enter the number of copies.", "Укажите количество копий."], ["Please choose a deadline.", "Выберите срок."], ["Please choose the date.", "Выберите дату."], ["Please enter who it is for.", "Укажите, для кого."], ["Save print log", "Сохранить запись"], ["Send order", "Отправить заказ"], ["+{card} TJS per sheet", "+{card} TJS за лист"], ["Binding (per copy; choose None for plain printouts)", "Переплёт (за копию; выберите «Нет» для обычной распечатки)"], ["Print on card stock (+{card} TJS per sheet)", "Печать на картоне (+{card} TJS за лист)"], ["Cut to A5 (+{cut} TJS per copy)", "Резка до A5 (+{cut} TJS за копию)"], ["Staff price: the {disc}% discount is applied automatically.", "Цена для сотрудников: скидка {disc}% применяется автоматически."], [", staff discount ", ", скидка сотрудникам "], ["Staff report", "Отчёт по сотрудникам"], ["The report works after the Google script is connected.", "Отчёт заработает после подключения скрипта Google."], ["Staff access", "Доступ сотрудников"], ["Enter the staff code.", "Введите код сотрудника."], ["Cancel", "Отмена"], ["Unlock", "Открыть"], ["Wrong code.", "Неверный код."], ["Could not check the code. Check your connection and try again.", "Не удалось проверить код. Проверьте интернет и попробуйте снова."], ["Small Runs.", "Малые тиражи."], ["Big Ideas.", "Большие идеи."], ["Choose your format, see your price and bring your book to life.", "Выберите формат, сразу увидите цену и оживите свою книгу."], ["Start Your Order", "Оформить заказ"], ["ONE COPY OR A HUNDRED — PRINTED WITH CARE", "ОДНА КОПИЯ ИЛИ СТО — НАПЕЧАТАНО С ЗАБОТОЙ"]]).forEach(function(r){ D.ru[r[0]] = r[1]; });
-function t(s){ var d = D[LANG]; return (d && d[s]) || s; }
-function updateSend(){ $("send").textContent = t(sel.mode === "log" ? "Save print log" : "Send order"); }
-var orig = typeof WeakMap !== "undefined" ? new WeakMap() : null;
-function tok(k){
-  if(k === "disc") return String(Math.round(DISCOUNT * 100));
-  var v = { bw_single: PRICE["B&W"].Single, bw_double: PRICE["B&W"].Double, colour_single: PRICE["Colour"].Single, colour_double: PRICE["Colour"].Double, card: CARD_PER_SHEET, cut: CUT_A5, glue: BINDING.Glue, spiral: BINDING.Spiral }[k];
-  return v === undefined ? null : v.toFixed(2);
+function segHTML(k, opts, cur){
+  return '<div class="seg' + (k === "paper" ? "" : " gap") + '" data-k="' + k + '">' + opts.map(function(o){
+    return '<button type="button" data-v="' + esc(o[0]) + '"' + (o[0] === cur ? ' class="on"' : '') + '>' + esc(o[1]) + '</button>';
+  }).join("") + '</div>';
 }
-function fillTokens(str){ return str.replace(/\{(\w+)\}/g, function(m, k){ var v = tok(k); return v === null ? m : v; }); }
-function applyLang(){
-  document.documentElement.lang = LANG;
-  if(document.createTreeWalker && orig){
-    var tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null), n;
-    while((n = tw.nextNode())){
-      var p = n.parentNode;
-      if(!p || /^(SCRIPT|STYLE)$/.test(p.nodeName) || (p.closest && p.closest("#tier,#total,#err,#msg,#send,#ge"))) continue;
-      if(!orig.has(n)) orig.set(n, n.nodeValue);
-      var o = orig.get(n), key = o.trim();
-      if(!key) continue;
-      var tr = fillTokens(t(key));
-      n.nodeValue = o.replace(key, function(){ return tr; });
-    }
-  }
-  document.querySelectorAll("[placeholder]").forEach(function(el){
-    if(!el.dataset.ph0) el.dataset.ph0 = el.getAttribute("placeholder");
-    el.setAttribute("placeholder", t(el.dataset.ph0));
+function partHTML(p, i){
+  return '<div class="part"><div class="parthead"><span>Part</span><b>' + (i + 1) + '</b>' +
+    '<input class="pname" placeholder="Name, e.g. Cover" value="' + esc(p.name) + '" autocomplete="off">' +
+    (parts.length > 1 ? '<button type="button" class="prm" aria-label="Remove">&times;</button>' : '') + '</div>' +
+    segHTML("paper", [["Paper", "Paper"], ["Card", "Card stock"]], p.paper) +
+    segHTML("color", [["B&W", "B&W"], ["Colour", "Colour"]], p.color) +
+    segHTML("sides", [["Single", "Single-sided"], ["Double", "Double-sided"]], p.sides) +
+    '<div style="margin-top:10px"><label>Pages (A4)</label><input class="ppages" type="number" inputmode="numeric" min="1" value="' + esc(p.pages) + '"></div>' +
+    '<p class="osmall pline"></p></div>';
+}
+function renderParts(){
+  var box = $("parts");
+  box.innerHTML = parts.map(partHTML).join("");
+  box.querySelectorAll(".part").forEach(function(el, i){
+    var p = parts[i];
+    el.querySelectorAll(".seg").forEach(function(seg){
+      wireSeg(seg, function(v){ p[seg.dataset.k] = v; calc(); });
+    });
+    el.querySelector(".pname").oninput = function(){ p.name = this.value; };
+    el.querySelector(".ppages").oninput = function(){ p.pages = this.value; calc(); };
+    var rm = el.querySelector(".prm");
+    if(rm) rm.onclick = function(){ parts.splice(i, 1); renderParts(); };
   });
-  updateSend();
-  $("err").textContent = ""; $("msg").textContent = "";
+  translate(box);
   calc();
   placeAll();
   if(window.requestAnimationFrame) requestAnimationFrame(placeAll);
 }
-function setLang(l){
-  LANG = l;
-  try{ localStorage.setItem("gf_lang", l); }catch(e){}
-  applyLang();
+
+// ---------- prices and totals ----------
+function figures(){
+  var c = parseInt($("copies").value, 10) || 0;
+  var lines = [], perCopy = 0, sheetsPerCopy = 0, pagesPerCopy = 0;
+  parts.forEach(function(p){
+    var pg = parseInt(p.pages, 10) || 0;
+    var sheets = p.sides === "Double" ? Math.ceil(pg / 2) : pg;
+    var perSheet = PRICE[p.color][p.sides] + (p.paper === "Card" ? CARD_PER_SHEET : 0);
+    var cost = sheets * perSheet;
+    lines.push({ pg: pg, sheets: sheets, perSheet: perSheet, cost: cost });
+    perCopy += cost; sheetsPerCopy += sheets; pagesPerCopy += pg;
+  });
+  var anyPages = pagesPerCopy > 0;
+  perCopy += ($("cut").checked ? CUT_A5 : 0) + BINDING[sel.binding];
+  var disc = sel.mode === "log" ? DISCOUNT : 0;
+  var gross = (anyPages && c > 0) ? c * perCopy : 0;
+  return { c: c, lines: lines, perCopy: perCopy, sheetsPerCopy: sheetsPerCopy, pagesPerCopy: pagesPerCopy, anyPages: anyPages,
+           disc: disc, gross: gross, total: Math.round(gross * (1 - disc) * 100) / 100 };
 }
-(function(){
-  var saved = null; try{ saved = localStorage.getItem("gf_lang"); }catch(e){}
-  var nav = (navigator.language || "en").toLowerCase();
-  LANG = (saved === "ru" || saved === "en") ? saved : (nav.indexOf("ru") === 0 ? "ru" : "en");
-  document.querySelectorAll("#lang button").forEach(function(b){ b.classList.toggle("on", b.dataset.v === LANG); });
-})();
+function calc(){
+  var f = figures();
+  animateTotal(f.total);
+  document.querySelectorAll("#parts .part").forEach(function(el, i){
+    var l = f.lines[i], pl = el.querySelector(".pline");
+    if(pl) pl.textContent = (l && l.pg > 0) ? l.sheets + t(" sheets x ") + l.perSheet.toFixed(2) + " = " + money(l.cost) : "";
+  });
+  $("tier").textContent = f.anyPages
+    ? t("Each copy: ") + money(f.perCopy) + (f.c > 0 ? t(" · total sheets: ") + (f.sheetsPerCopy * f.c) : "") +
+      (f.disc ? t(", before discount ") + money(f.gross) + t(", staff discount ") + Math.round(DISCOUNT * 100) + "%" : "")
+    : "";
+}
+function partLine(p, i){
+  return (p.name.trim() || ("Part " + (i + 1))) + ": " + (parseInt(p.pages, 10) || 0) + " p, " + p.color + ", " + p.sides + "-sided, " + (p.paper === "Card" ? "Card stock" : "Paper");
+}
+function summary(){
+  var s = parts.map(partLine);
+  if($("cut").checked) s.push("Cut to A5");
+  return s.join("; ");
+}
+function data(){
+  var f = figures(), isLog = sel.mode === "log";
+  return {
+    type: sel.mode,
+    name: isLog ? $("worker").value : ($("fn").value.trim() + " " + $("ln").value.trim()),
+    date: isLog ? $("pd").value : dl.value,
+    binding: sel.binding, printing: summary(),
+    pages: f.pagesPerCopy, copies: f.c, sheets: f.sheetsPerCopy * f.c, total: f.total.toFixed(2),
+    forwho: isLog ? $("forwho").value.trim() : "", worker: isLog ? $("worker").value : "",
+    contact: isLog ? "" : fullPhone(), code: isLog ? STAFF_CODE : "",
+    discount: f.disc ? Math.round(DISCOUNT * 100) + "%" : "0%"
+  };
+}
+function text(){
+  var d = data(), f = figures(), L = [];
+  if(d.type === "log") L.push("Print log", "Work by: " + d.name, "Date: " + d.date, "For: " + d.forwho, "Discount: " + d.discount);
+  else L.push("New book printing order", "Name: " + d.name, "Phone (WhatsApp/Telegram): " + d.contact, "Deadline: " + d.date);
+  L.push("Binding: " + d.binding, "Parts:");
+  parts.forEach(function(p, i){ L.push("- " + partLine(p, i)); });
+  if($("cut").checked) L.push("Cut to A5: yes");
+  L.push("Number of copies: " + d.copies, "Total sheets: " + d.sheets, "Total: " + money(f.total));
+  return L.join("\n");
+}
+function fullPhone(){
+  var raw = $("ph").value.trim(), code = $("cc").value;
+  if(!raw) return "";
+  if(raw.charAt(0) === "+") return "+" + raw.replace(/\D/g,"");
+  if(raw.indexOf("00") === 0) return "+" + raw.replace(/\D/g,"").slice(2);
+  var d = raw.replace(/\D/g,"").replace(/^0+/,"");
+  return code ? code + " " + d : "+" + d;
+}
+function valid(){
+  var e = "", order = sel.mode === "order", log = sel.mode === "log";
+  if(order && (!$("fn").value.trim() || !$("ln").value.trim())) e = t("Please enter first and last name.");
+  else if(order && (function(n){ return n < 8 || n > 15; })(fullPhone().replace(/\D/g,"").length)) e = t("Please enter a valid phone number linked to WhatsApp or Telegram.");
+  else if(parts.some(function(p){ return !(parseInt(p.pages, 10) > 0); })) e = t("Please enter the number of pages.");
+  else if(!(parseInt($("copies").value, 10) > 0)) e = t("Please enter the number of copies.");
+  else if(order && !dl.value) e = t("Please choose a deadline.");
+  else if(log && !$("pd").value) e = t("Please choose the date.");
+  else if(log && !$("forwho").value.trim()) e = t("Please enter who it is for.");
+  $("err").textContent = e;
+  return !e;
+}
+
+// ---------- staff access ----------
 var STAFF_CODE = "";
 try{ STAFF_CODE = sessionStorage.getItem("gf_staff") || ""; }catch(e){}
 function askCode(done){
@@ -402,6 +495,110 @@ function askCode(done){
     }).catch(function(){ $("go").disabled = false; err.textContent = t("Could not check the code. Check your connection and try again."); });
   };
 }
+function lockStaff(){
+  STAFF_CODE = ""; try{ sessionStorage.removeItem("gf_staff"); }catch(e){}
+  var b = document.querySelector('#mode button[data-v="order"]'); if(b) b.click();
+}
+
+// ---------- payments (staff only) ----------
+var PAYTAB = "orders", PAYFILTER = "unpaid", PAYDATA = null, DEBTDATA = null, PAYBUSY = false;
+function apiGet(params){
+  var q = Object.keys(params).map(function(k){ return k + "=" + encodeURIComponent(params[k]); }).join("&");
+  return fetch(SCRIPT_URL + "?" + q + "&code=" + encodeURIComponent(STAFF_CODE)).then(function(r){ return r.json(); }).then(function(j){
+    if(j && j.error === "code"){ lockStaff(); throw new Error("code"); }
+    return j;
+  });
+}
+function loadPay(){
+  if(!SCRIPT_URL || !window.fetch){ $("paylist").textContent = t("Could not load. Check your connection and try again."); return; }
+  $("paylist").textContent = t("Loading…");
+  var req = PAYTAB === "orders" ? apiGet({ type: "orders", filter: PAYFILTER }) : apiGet({ type: "debts" });
+  req.then(function(j){ if(PAYTAB === "orders") PAYDATA = j; else DEBTDATA = j; renderPay(); })
+     .catch(function(e){ if(e && e.message === "code") return; $("paylist").textContent = t("Could not load. Check your connection and try again."); });
+}
+function renderPay(){
+  var h = "";
+  $("payfilterwrap").style.display = PAYTAB === "orders" ? "" : "none";
+  if(PAYTAB === "orders"){
+    if(!PAYDATA) return;
+    var list = PAYDATA.orders || [];
+    if(PAYFILTER === "unpaid") h += '<p class="osmall" style="margin:0 0 6px">' + esc(t("Left to collect")) + ': <b>' + money(PAYDATA.totalLeft || 0) + '</b></p>';
+    if(!list.length) h += '<p class="osmall">' + esc(t("No orders here.")) + '</p>';
+    list.forEach(function(o){
+      var left = Math.max(0, o.total - o.paid);
+      h += '<div class="po"><div><b>#' + esc(('000' + o.no).slice(-4)) + '</b> ' + esc(o.name) + ' <span class="muted">· ' + esc(t(o.status)) + '</span></div>' +
+        '<div class="osmall" style="margin:2px 0 0">' + esc(t("Total")) + ': ' + money(o.total) + ' · ' + esc(t("Paid")) + ': ' + money(o.paid) + ' · ' + esc(t("Left")) + ': ' + money(left) + '</div>' +
+        (o.payment === "Paid"
+          ? '<div class="osmall">' + esc(t("Paid")) + ' ' + esc(o.paidAt) + '</div>'
+          : '<div class="pamt"><input type="number" inputmode="decimal" step="0.01" min="0" value="' + left.toFixed(2) + '"><button type="button" class="obtn sm" data-a="payorder" data-no="' + esc(o.no) + '">' + esc(t("Record payment")) + '</button></div>') +
+        '</div>';
+    });
+  } else {
+    var people = (DEBTDATA && DEBTDATA.people) || [];
+    if(!DEBTDATA) return;
+    if(!people.length) h += '<p class="osmall">' + esc(t("No unpaid debts.")) + '</p>';
+    else h += '<p class="osmall" style="margin:0 0 6px">' + esc(t("Total unpaid")) + ': <b>' + money(DEBTDATA.totalUnpaid || 0) + '</b></p>';
+    people.forEach(function(p){
+      h += '<div class="pperson"><div class="phead"><b>' + esc(p.name) + '</b><b>' + money(p.unpaid) + '</b></div>';
+      p.months.forEach(function(m){
+        h += '<div class="po"><div class="phead"><span>' + esc(m.month) + ' <span class="muted">· ' + m.count + ' ' + esc(t("records")) + '</span></span><b>' + money(m.unpaid) + '</b></div>' +
+          '<div class="pamt"><button type="button" class="obtn sm" data-a="paymonth" data-who="' + esc(p.key) + '" data-m="' + esc(m.month) + '" data-label="' + esc(p.name + " · " + m.month + " · " + money(m.unpaid)) + '">' + esc(t("Mark month paid")) + '</button>' +
+          '<button type="button" class="obtn alt sm" data-a="toggle">' + esc(t("Details")) + '</button></div>' +
+          '<div class="mrecs hide">' + m.records.map(function(r){
+            return '<div class="mrec"><span>' + esc(r.date) + (r.forwho ? ' · ' + esc(r.forwho) : '') + '</span><b>' + money(r.total) + '</b>' +
+              '<button type="button" class="obtn alt sm" data-a="payrec" data-id="' + esc(r.id) + '" data-label="' + esc(p.name + " · " + r.date + " · " + money(r.total)) + '">' + esc(t("Mark paid")) + '</button></div>';
+          }).join("") + '</div></div>';
+      });
+      h += '</div>';
+    });
+  }
+  $("paylist").innerHTML = h;
+}
+$("paylist").onclick = function(ev){
+  var b = ev.target.closest ? ev.target.closest("button") : null;
+  if(!b || PAYBUSY) return;
+  var a = b.dataset.a, req;
+  if(a === "toggle"){ b.closest(".po").querySelector(".mrecs").classList.toggle("hide"); return; }
+  if(a === "payorder"){
+    var amt = parseFloat(String(b.parentNode.querySelector("input").value).replace(",", "."));
+    if(!(amt > 0)) return;
+    req = { type: "pay_order", no: b.dataset.no, amount: amt };
+  } else if(a === "paymonth"){
+    if(!window.confirm(t("Mark as paid?") + "\n" + b.dataset.label)) return;
+    req = { type: "pay_month", who: b.dataset.who, month: b.dataset.m };
+  } else if(a === "payrec"){
+    if(!window.confirm(t("Mark as paid?") + "\n" + b.dataset.label)) return;
+    req = { type: "pay_record", id: b.dataset.id };
+  } else return;
+  PAYBUSY = true; b.disabled = true;
+  apiGet(req).then(function(j){
+    PAYBUSY = false;
+    if(j && j.ok) loadPay(); else { b.disabled = false; window.alert(t("Could not save. Check your connection and try again.")); }
+  }).catch(function(e){
+    PAYBUSY = false; b.disabled = false;
+    if(e && e.message === "code") return;
+    window.alert(t("Could not save. Check your connection and try again."));
+  });
+};
+
+// ---------- modes ----------
+function setMode(m){
+  sel.mode = m;
+  var log = m === "log", pay = m === "pay";
+  if(pay){
+    swap([$("entry")], [$("payview")]);
+    loadPay();
+  } else {
+    swap([$("payview")], [$("entry")]);
+    swap(log ? [$("cust"), $("dlcard")] : [$("staffcard"), $("report")], log ? [$("staffcard"), $("report")] : [$("cust"), $("dlcard")]);
+    updateSend();
+    $("err").textContent = ""; $("msg").textContent = "";
+    calc();
+    setTimeout(placeAll, 40);
+  }
+}
+
+// ---------- theme ----------
 function applyTheme(th){
   document.documentElement.setAttribute("data-theme", th);
   var m = document.querySelector('meta[name="theme-color"]');
@@ -411,26 +608,32 @@ function setTheme(th){
   try{ localStorage.setItem("gf_theme", th); }catch(e){}
   applyTheme(th);
 }
+
+// ---------- wiring ----------
 (function(){
-  var saved = null; try{ saved = localStorage.getItem("gf_theme"); }catch(e){}
-  var th = (saved === "light" || saved === "dark") ? saved : "light";
+  var saved = null; try{ saved = localStorage.getItem("gf_lang"); }catch(e){}
+  var nav = (navigator.language || "en").toLowerCase();
+  LANG = (saved === "ru" || saved === "en") ? saved : (nav.indexOf("ru") === 0 ? "ru" : "en");
+  document.querySelectorAll("#lang button").forEach(function(b){ b.classList.toggle("on", b.dataset.v === LANG); });
+  var sv = null; try{ sv = localStorage.getItem("gf_theme"); }catch(e){}
+  var th = (sv === "light" || sv === "dark") ? sv : "light";
   applyTheme(th);
   document.querySelectorAll("#theme button").forEach(function(b){ b.classList.toggle("on", b.dataset.v === th); });
 })();
-["mode","binding","color","sides","lang","theme"].forEach(function(g){
-  document.querySelectorAll("#"+g+" button").forEach(function(b){
-    b.onclick = function(){
-      if(g === "mode" && b.dataset.v === "log" && !STAFF_CODE){ askCode(function(){ b.click(); }); return; }
-      document.querySelectorAll("#"+g+" button").forEach(function(x){ x.classList.remove("on"); });
-      b.classList.add("on"); sel[g] = b.dataset.v;
-      place($(g));
-      if(g === "lang") setLang(b.dataset.v); else if(g === "theme") setTheme(b.dataset.v); else if(g === "mode") setMode(b.dataset.v); else calc();
-    };
-  });
+wireSeg($("lang"), function(v){ setLang(v); });
+wireSeg($("theme"), function(v){ setTheme(v); });
+wireSeg($("binding"), function(v){ sel.binding = v; calc(); });
+wireSeg($("mode"), function(v, b){
+  if((v === "log" || v === "pay") && !STAFF_CODE){ askCode(function(){ b.click(); }); return false; }
+  setMode(v);
 });
-["pages","copies"].forEach(function(id){ $(id).oninput = calc; });
-["card","cut"].forEach(function(id){ $(id).onchange = calc; });
-$("forwho").oninput = calc;
+wireSeg($("paytab"), function(v){ PAYTAB = v; loadPay(); });
+wireSeg($("payfilter"), function(v){ PAYFILTER = v; loadPay(); });
+$("payrefresh").onclick = loadPay;
+$("copies").oninput = calc;
+$("cut").onchange = calc;
+$("addpart").onclick = function(){ addPart({ pages: "100" }); };
+$("addcover").onclick = function(){ addPart({ name: t("Cover"), paper: "Card", color: "Colour", sides: "Single", pages: "1" }, true); };
 $("priceBtn").onclick = function(){
   var open = $("pricePanel").classList.toggle("open");
   this.setAttribute("aria-expanded", open ? "true" : "false");
@@ -465,14 +668,15 @@ function applyPrices(o){
   if((x = n(o.staff_discount_percent)) !== null && x <= 100) DISCOUNT = x / 100;
   applyLang();
 }
+addPart({ pages: "100" });
 applyLang();
-placeAll();
-if(SCRIPT_URL && window.fetch){
-  fetch(SCRIPT_URL + "?type=prices").then(function(r){ return r.json(); }).then(applyPrices).catch(function(){});
-}
 window.addEventListener("load", placeAll);
 window.addEventListener("resize", placeAll);
 requestAnimationFrame(function(){ document.body.classList.add("ready"); });
+if(SCRIPT_URL && window.fetch){
+  fetch(SCRIPT_URL + "?type=prices").then(function(r){ return r.json(); }).then(applyPrices).catch(function(){});
+}
 </script>
+
 </body>
 </html>
