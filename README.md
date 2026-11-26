@@ -22,3 +22,7 @@ GitHub Pages: upload the files to the repository root and commit.
 - An order is a list of parts (cover, inside pages, ...). Each part has its own paper (paper / card stock), colour, sides and page count; binding, cut to A5 and number of copies apply to the whole order.
 - Payments mode (staff code): customer orders can be marked paid (full or partial); staff debts (print log, grouped by "Work by") can be marked paid per month or per record.
 - Sheet columns are found by header name. New columns are added automatically: Orders -> Payment, Paid TJS, Paid at; Print Log -> Payment, Paid at, ID.
+
+## Files, comments and totals
+- Customers can attach up to 3 files (500 MB each, sent in 5 MB pieces); they are saved in the Drive folder "Goodfield Orders" and the links go to the Orders sheet (Files) and the email. The comment goes to the Comment column.
+- Orders and Print Log end with a TOTAL row (SUM formulas) that the script keeps at the bottom after every new row.

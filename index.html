@@ -104,6 +104,19 @@ h1 span{display:block}
 .mrec{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:6px 0;font-size:14px}
 .mrec .obtn.sm{flex:none;padding:7px 10px;font-size:13px}
 .hide{display:none}
+textarea{width:100%;font:inherit;font-size:16px;padding:13px 14px;border:1px solid var(--edge);border-radius:14px;background:var(--field);color:var(--ink);box-shadow:inset 0 1px 3px rgba(20,40,74,.08);resize:vertical;min-height:96px}
+textarea:focus{outline:3px solid rgba(91,141,196,.55);outline-offset:2px}
+.fitem{display:flex;align-items:center;gap:8px;padding:8px 8px 8px 12px;border:1px solid var(--edge);border-radius:12px;background:var(--field);margin-top:8px;font-size:14px}
+.fitem span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fitem small{flex:none;color:var(--muted)}
+.fitem button{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--edge);background:transparent;color:var(--ink);font-size:18px;line-height:1;padding:0}
+.pw{position:relative}
+.pw input{padding-right:50px}
+.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:transparent;color:var(--muted);padding:0;display:flex;align-items:center;justify-content:center}
+.eye svg{width:21px;height:21px}
+.eye .e2{display:none}
+.eye.on .e1{display:none}
+.eye.on .e2{display:block}
 </style>
 <link rel="icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCABiAGADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD7+oxRRQAUhOK5vxt498K/D3wxJr3izVYrG0X5UB+aSZ+yRoOXY+g+pwK+W7z43fHD43a/Po3wa8N3GjaLG2yTUyyCQD1knb5IjjnYgZvc1Si3qZVKsYadT6y1rxT4c8OW/neINd03S0IyGvblIs/QMRn8K8R8d/tBX9/4t03wX8E4NN8S6xeK0j3T5eGMDOVXlQSACxYnaBjqTxzmg/sfw6lP/anxM8a3+rahL80qWXXPvNKGdvwC0/xn8ArHwfrGk+IPg74007wprFgrRvHqt/nz88bg77sHBIKldpHpUtX0RjOdZq9rfmdN8Pv2h1+3ap4Y+MMdj4Y8QabMImdQwhm9v4trDg9SpBBBr2jRfE/h7xFB52g63p+poOSbSdZMfUA5H4188+A/2fdB12TVNa+KHiuz8Va/qUgkP9mX+BCe7blILseB90KAAAKt6x+y3oulXa6z4Z8e6l4ehtz5s0k6qzRRjlmWVShXAB5OR61nJyiOE6qV2r/mfSOR1rJ1fxP4e0Bd2ta3YWHGQtxOqMfopOTXy545+Pmr3OnnQPBF9f2+kWii3bXLh991eEA/MWI+TdgnP3j146V3HhX9nnSL/SbbWvF3iG91K4uoluGEOIwNyhuZGyzdevFYSxMpPlpK4/bubtTVz0af4zfDaB9reJoXPrFDI4/MLXS+HvE2ieKtLbUdBvlvLZZDEzhWXDAAkYYA9xXBXnwZ+Glh4Wvbqz0FZZI7WSSOZ7qWTkISCPmx2rH/AGZ7t7n4b6mHx8uoE8epiTNTCrWVVQqWs+xUZzUlGVtT2yuI+KvxO8PfCf4dXXirXmaTb+6tbONgJLuYj5Y0z9Mk9AATXaSuscTOzKqqMlmOAB6mvgjdqH7X/wC2DLB9omX4d+GSeEJUSQBsZH+3cOvXqI19q9GlDmbb2RdWbirR3ZrfDX4aeOP2nfHDfFb4tXVza+Fw5SwsIGaIXCA/6uAfwQDo0n3nOcHuPTvip+0v8OfgdZDwD4G0a21fXLRRAmladiO1sT2WVl/jzj5FBY9yM1k/tL/HK68EWtj8FfhPAy+Kb6KK1P8AZyfNp0LjbFFCB0mcYC/3F56kGr3wT/Zs0X4OeDp/HfibSz4m8dxWsl55a4m+yuFL+Tb54MpPBlOSSeMDrs0rKc9uiMIqzahv1Z55a+Bf2s/jvANT8V+JX8HaJcfNHYyM9mCh9LeL94ev/LVgTVwfspfDHQcx+MPjdawXn8YL21vz9JJGb86520tv2p/2nr6S5up5/BHg+Ryohcy2UQXP3dgAmuG45LYXOenSuhh/Ze+B3hZ2tvHfxs/05eJIVu7O0we/ysHf8zWvNbTmt5JGMoX15b+bZag/ZO8B62rSeA/jLBd3a8oVMFzg/WGRWFTePbPxX4H+Gfhb4EQa/ceIte1eY3Go3DzyOHDybYYE3kssWR09EPqahh/ZX+EPiS+jf4c/GNmnRlYwpPbXbEAgn/V7HGQOvat7S1PiD/gpBfi5iBt9GiKwITnHlWqBf/HpWP1rmxMnKPLzX+Qcllta+m5J8cvBOl/Dr9nLw9omlxK7rqatdTkfNcymCTc5P14A7DAqPxV8QNc+KT6Z8Kfhkzm2FrHHf3yEosoVFDAsOVhU9T1c8DjrX+N3xAi+LXjDT/hT4A07+2J7W9M0l5GfkaVVZCEboI0DHc54zwPer4Y+Ef7QvgtLkeFZdM0w3TKZ3iu4WaTbwAWZCcDJ46c15s6fvPl2FJtzagtPI9z1DT7X4Vfsx32mC8kul0zS5IlmkPMkjggYHYbnwB2GBWT+zXYvb/Bn7ZJGV+2X0sqk91XbGD+amvn7xHrnxb8QeME+FfiLxENVv57iON7S1kjljWT7w3sij7uNzDtjmvszwvoNp4X8Hab4fsv9RZW6wq2MbiByx9ycn8adNKVTmS0Ssb0Zc87pWSVjyb9rLx/L4A/Zl1iezmMV/qzJpFs6nBQzZ8xh9I1kP1xXJfAmx0n4D/sNSePtZtliurqybXbsFcNIXGLaHP8AumNR7ua4T9va+n1LWfh54Jgywu5552QH7zM0UCf+hv8AnXR/tx6qnhz9m3QPB+nnyY7zUI4gi9DFbRFguPTcI/yr1oQvGMP5mOcrSlLsji/2ZNBgS38ZftV/FG5aZ4XupbaWUZIYDM8yA9TyIYx2wwHau6/Za8dfFz4tfEnxZ8RvEmqTQeDJM2dlo5GYY5gysoh4/wCWacO38TP7ccX+0dcS/Df9iD4a/C/S0aKbVBbrcoucyeXEJpAf96eRDXceI/DcPgPwr4D+FOqeIrjw54Zi8O3M7SRaodIj1fV02N9mmvVGYlO+WTA+977cU52knLvovRExvFpdt/Vkvx2j+NPjHVLrRIfF/hj4YeComKG71LWEiutRUfxPs5RD2jDAn+LrgeT+Hvgx+z7DCsEnizxv8QtVPMp8H6PI0G7vh1jZT9TIa6f4OeG7651O607wP4C8CahNNZ22vW2v+MXa8vbS2ug4WB9iEzukkUgD7kypTPJr6Bi+F/jTWbMQ+M/i5rjRYx9h8LwR6Nbgd13LvmI/4GKXtHS91OwciqPmaueL+H/2W/ht4kh0/wAZ/CzxnrdnNY3yM1vq0O94JoZFLwyKVSWJxjBB9QcEGvOPjN4im0D9p/xpfeGvECIt4otZZrdwCu+FFmi3dmymCR05HrXukXg3UfAvxE+I3gT4dXWoQPrnhWHWrDzLx55lv0eS3kfzZWLbnHlZYng88Va+G3gf4PfCvSV0Txz4l8HXfi/UFU30ep3luzAnnyo45DnaCepGWPJ7AYVZSm97kTo3tGKt5nAfCH4sfBX4WeDf3FnrV9r10gN9e/ZY13EdI0Jk+WMHoO55Ptr6v8eviX8Tp28O/CfwhdWiTHY+oI3myop4yZMCOEe+SfSva9f+Hfgqx8J6pq/hzwB4Tk1aGzlnsxNpsbRPKqFkDBQOCQOnrXkHwu+ImufGf9knx6l0LXR9Xs1uYYhosbWiRIYBLEFAbIPDKTnmslRlJXvoPknH3HLTyNO0+Gt98IPgV4g8ZaXc22qeNDaEy3y5dLWMsPNEPqwG4lj1K9AOK9S+DPiyXxj8G9I1O7kZ72JDaXTMclpIzt3E+rDa3415r+y1exeJ/wBlm48NzPvFpNdaeVbnEcq+Yo/8imqf7IWo3P8AwjnirQrmQlrO+jlCntuVkP6xUpU/ZVOVFUmk48uzR5r+2Ey2/wC1f8Jbq5/49FMRb8L6In9CK7D9tH4deNviCvw/h8IeHb7WEt7+5juhaLuEPmCIKz/3Vwr/ADHgd6w/2/fD9yPCvgvxvaqwbTb+W0d17GRVlj/8ehI/GvoHxH8WINC/Zwj+LGn6DfeIYX0+3vkstOwZHEoXnPOFXdljg4APBrt53GNOUely3FNziz53/bYRbLxr8Ip7tR9ghvJEfPQbZbYn/wAdFfYGraJoviLSH03XdKsdUsZDlra9gWeJvQlWBBr5U+Mmj+Jf2iP2KdD8b/8ACI3mneJrG5N+mkIjeZJGWaFxHuAYhkKSAkDO2u11L9oS0+FvgPSfC/iXT7rxF410+yt7bV49JVjZ2lx5a/6+7ZdkZIwx4JGc4xipmnKEUt1ccWoyk3s7Gx4Z8JeF/Av7YdzpvhLQbDRbTU/CH2qa3sIRDG8sV7t37Rxu2yY/CtHXvjBr2o3+raV8IvAF541u9Mle2utQa5Sz0+KdfvRLM5zM6nhggwDwWzxXlWmfFeO4+NGjfEDxN408Biy1XS7rw/GPD+ofaV0aV3SaE3UjYJ3srLv2KqkD1zWXomkahr/wP+Hcel6V4k8R+HNFsr3Tdd0PwvqYsr2PV942zysJE3qG81vvcGRXwwpOns5CU+kTrPBXhi7+MvjS9134jeNdb0zxJpdt/ZuoeEdIgfRTZwyMJBHK4dpZ43KgiRXCtjjuK9m0v4RfDDRtCk0fT/APh6OzlBEscljHKZs9S7OCzn3Yk14KfHmn/Cz4r+Abr4reKrOz1/T/AATcQeJbl5POklLSwm2iOwZkl3CU8Dn5m4DVpS/HP4vfFjfZ/Aj4dTWWludo8VeIwIoQP70cZ4P/AI+f9mlKE3qtF+ARlCO+rO9+GQi8H+K/iB4AtrmR/Dnh57a805Z5DJ9ihuIGke1DE52IULKD0WQDoBXh37G0y/8ACqvilfTgi0MwbJGBgW0jH9GFM09fH3wr8HfG4+J/El74wvbS0gjuYLe3CxSXN9CN9y7Y37I0KjOQNqngcYteGLeP4S/8E3r6/vSbXVPFSExo42vm5AijH4QqX/OtVH3Wl1aM3LVN9Ezqv2KVkHwu8QSbR5J1KJUPqRbpn+Yqr+yO6XHjT4hXcE2+J54yB6ZmnI/Stj4Lp/wqr9hW88U6h+5kktbvWQGGCdw2wD8QseP96qP7Euitb/CnXvEUkZVtS1PyQT/EIUAJHtvd/wAqyrLmlKfmKmrezj5NnrXx3+Hg+KHwE8QeEo0DXssH2ixJ7XMR8yP8yu0+zGvFP2H/AIoQ658L7v4Y6mzQ6v4bdnt4ZTh2tHc8Y65jkLIR2BSvrEjIIr4V/aL8AeIfgR8erL9or4dR7dPuLrfqlsoPlxTvw6yAf8sZxkH+6/PdadL34uk+u3qdFT3WpnoPiSz/AGh/id+1Fb6HPpJ8M/Dnw3rUF6Z5MiPVo4ZA6EsDmZmxwgwqH72SK7XQ/EFx8JfEfi3T/EHhXxJqOk6vrtzrVnrmh6a+owPHPtLRzCHLo8bKycqQVC4PYXz4p/4aF/Zf1G6+FHigaHqmp2/2bz5CfN0+bKmWGTb8ytt3LuHOGDCvO9KtPCH7FvwXfUvFHiXVvEWv6nmOCxSeQQzSqNxSCJiViQZBeVuT+IWj4ly212sLZ83TudnfeNf2WfGdw1t4il8GC6k+Vk8QacLGYZ7ZnjRh+dP0f4BfBmeWbUvhxrOraCbgASzeEvEc0aSDtlVdlP5cVx3wK8T/ABY+IWh6z8S/jPeaRZeAnjkubLTbzT4tnl9TKHddwgRRgFiS5yenXz1vHvwk8XfDP4j/ABKtfgh4ebTfDWp2ttp7We7TLq8ilYKZHkhwUbkMAOxAPPNPlkm4pv8AQm8Xq0jrPhl4L+BXgvSdZ8dfEm4s7vWE8Q6jp8N54lujdzS/Z7l4k8uFsmSQqq5IVmJ9OlejeIvi74ok0E3/AId0LTvBPh9V2jxN47f7HHtx/wAu9iCJZDjGA5Qexry+00fxFJ8IvCXjf9mv4Q6Raa14mWe4vdV1a6W9udLG7A2zXDdWO45wenIJNUbP9ma4Mz/ET9qf4pi+ggxK9o18RCo67GnfbgdtkSrnoDVNRk7zf9ehK5krRR6B8Gl8MeO/GXiDxZBPr3jNLuzbTNW8V6rGNP068UDH2e1tFwHUAnLsPlGRuJJFeW/EPU3/AGnP2mdG+GfgybHgvw8Sbu8tx+6KqQssykcYwBFH6kkjg1Q8d/GbWvjLPD8CP2bfD01l4e8sW095bxG1D244IAx/o9v6s3zP0xzg+x6PpfgH9jf9nie/1K4Gpa5d482RQFm1S72/JFEOqxLk/wC6uWPJ5dvZvm+09kJ++rdFuzmP2wPHMeleE9A+CvhSDzL3VGhMtnb8mOBGC28OB/fkC4HpH719EfC/wZD8P/hJoXhKILvsbVVuHX+OZvmlb8XZv0r5i/Zk8DeIvin8S739of4jwGQyztJpMbjCSSgbPNRT0iiUbE9Tk/w5P2YBgYArKraKVNdN/U0ormbqP5egtUdZ0fS/EGg3ei61YwX2n3kTQXFtOm5JUYYKkelXqKwOg+A/GPwu+KP7JnxFn+JHwonutX8EysDe2Um6UQxZ/wBVdKOWQZO2ccr3x/F7l4N+KvwD/aastJsvEml6VJr9jKLmHQ9cCmSOTAyYWOFmU4HA6gDcor6IeNJI2R1DKwwVYZBHpXzL8Vv2K/h/42vptc8HXD+D9ZdjKy2ke+zkfruMII8s57xkfQ10qpGfx6Pv/mYOnKHw7djU/aP+EHxP+LVz4b8M+EPE1ho/hBSw1i2dmRiQylH2KP3qqoO2PIG7BPYjF+Pnw98M/C/9gDW/CXhi1+z2kD2heV8GW5lNzFullb+J2xz6cAYAFebro37b3wZjFlotwfGujw4WMKy6ku0dAFkKzr9ATV/xj8Qfin8Vf2MfiLb/ABC+Hlxoeqabc6fHbQW9hcxPc5nVmYRyZJ27f4cjnmrjGUXFKScUyG076O9i5oEn7Qcv7HXwmg+BSRZns7hNTmb7OHiAlPlkGc4A+/kqCeBVXR/2PfiT8QNah1v48fE64uyDu+xWszXcwHdRI4EcX/AENcV8Mv2gfjr4R+E+ifD7wV8G7nUBpkBgjvLjTb2ZpMuzZKKFUfe9e1dFL4Y/ba+NURtPEGpN4M0ab5ZI3ddOUqeoMcW6Zx7MQKtqcW9UvPqQnGSWjZ6j4l+KvwH/AGWPBtx4T8EWFnd64oy2lafKHmklA+/d3Bzt/wCBEt/dWvK/h18JfiP+078Q4/ip8a2nsfCy/wDHlpoVoftMWciKBCcxwf3pD8z9v7w9d+FH7G3w78BTW+seKHbxfrkTCQSXsYW0ik67kgyQxB/ict64FfSCoqjCjA9KxdWMP4er7mqpufx7diGysrTTtNg0+wtora1t41ihghUKkaKMBVA4AAGAKsUUVzHQFFFFABR2oooAawBXmowThuTRRS6ggVju6mpFAA4FFFD3AdRRRTAKKKKAP//Z">
 <meta name="description" content="Печать книг и документов. Выберите параметры, сразу увидите цену и отправьте заказ. · Book and document printing: see the price, send your order.">
@@ -111,8 +124,8 @@ h1 span{display:block}
 <meta property="og:site_name" content="Goodfield Printing">
 <meta property="og:title" content="Goodfield Printing">
 <meta property="og:description" content="Печать книг и документов. Выберите параметры, сразу увидите цену и отправьте заказ. · Book and document printing: see the price, send your order.">
-<meta property="og:url" content="https://ilhom1906.github.io/bookshoparcha/">
-<meta property="og:image" content="https://ilhom1906.github.io/bookshoparcha/og-image.jpg">
+<meta property="og:url" content="https://ilhom1906.github.io/goodfieldprinting/">
+<meta property="og:image" content="https://ilhom1906.github.io/goodfieldprinting/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -170,7 +183,7 @@ h1 span{display:block}
 <p class="osmall">Type the number without the country code. Another country? Choose Other and type the full number starting with +.</p></div>
 </div>
 <div class="ocard" id="dlcard">
-<label for="dl">Deadline</label><input id="dl" type="date">
+<label for="dl">Deadline (working days Tuesday to Thursday)</label><input id="dl" type="date">
 </div>
 <div class="ocard" id="staffcard" style="display:none">
 <div class="row">
@@ -197,6 +210,14 @@ h1 span{display:block}
 <label class="chk"><input type="checkbox" id="cut"> Cut to A5 (+{cut} TJS per copy)</label>
 <div style="margin-top:12px"><label for="copies">Number of copies</label><input id="copies" type="number" inputmode="numeric" min="1" value="1"></div>
 </div>
+<div class="ocard" id="filebox">
+<label>Attach your file (PDF, Word, EPUB or any other file)</label>
+<input type="file" id="files" multiple style="display:none">
+<button type="button" class="obtn alt sm" id="pick" style="width:100%;flex:none">Choose file</button>
+<div id="flist"></div>
+<p class="osmall">Up to {maxf} files, {maxmb} MB each. Keep this page open while large files upload.</p>
+<div style="margin-top:14px"><label for="cm">Comment (describe your details)</label><textarea id="cm" rows="4" maxlength="600" placeholder="Write any details about your order"></textarea></div>
+</div>
 <div class="ocard">
 <div class="osmall">Total price</div>
 <div class="price" id="total">0.00 TJS</div>
@@ -217,7 +238,7 @@ h1 span{display:block}
 <div class="ocard"><div id="paylist"></div><button class="obtn alt" id="payrefresh" type="button" style="margin-top:12px">Refresh</button></div>
 </div>
 
-<div id="gate" class="gate" style="display:none"><div class="ocard gatebox"><h3>Staff access</h3><p class="osmall" style="margin:0 0 12px">Enter the staff code.</p><input id="gc" type="password" autocomplete="off"><div class="err" id="ge" style="margin-top:8px"></div><div class="row" style="gap:8px"><button class="obtn alt" id="gx" type="button">Cancel</button><button class="obtn" id="go" type="button">Unlock</button></div></div></div>
+<div id="gate" class="gate" style="display:none"><div class="ocard gatebox"><h3>Staff access</h3><p class="osmall" style="margin:0 0 12px">Enter the staff code.</p><div class="pw"><input id="gc" type="password" autocomplete="off"><button type="button" class="eye" id="gv" aria-label="Show or hide the code"><svg class="e1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><svg class="e2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 6.1A9.7 9.7 0 0 1 12 6c6.4 0 10 6 10 6a17 17 0 0 1-3.2 3.8M6.6 6.7C3.9 8.5 2 12 2 12s3.6 6 10 6c1.3 0 2.5-.2 3.6-.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></button></div><div class="err" id="ge" style="margin-top:8px"></div><div class="row" style="gap:8px"><button class="obtn alt" id="gx" type="button">Cancel</button><button class="obtn" id="go" type="button">Unlock</button></div></div></div>
 <script>
 // ---- PRICE LIST (TJS): change the numbers here (or in the Prices tab of the Google Sheet) ----
 var PRICE = {                       // price per printed A4 sheet
@@ -230,6 +251,8 @@ var BINDING = { Glue: 5.00, Spiral: 5.00, None: 0.00 }; // per copy
 var DISCOUNT = 0.30;                // 30% staff discount (print log only)
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxW4bRDwYuXdcSsiFSKoIQpznCNhCQcJTNWEF96Q73LP59eaAMv51eryydm2xT5ZyJt0Q/exec";
 var EMAIL = "caps.ilhom@gmail.com"; // used only until SCRIPT_URL is set
+var MAX_FILES = 3, MAX_MB = 500;    // files a customer may attach
+var CHUNK = 5 * 1024 * 1024;        // large files are sent in pieces of 5 MB (must stay a multiple of 256 KB)
 // ----------------------------------------------------
 
 var sel = { binding: "Glue", mode: "order" };
@@ -244,16 +267,18 @@ function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").rep
 // ---------- language ----------
 var LANG = "en";
 var D = { ru:{} };
-([["Place an order", "Сделать заказ"], ["Glue binding", "Клеевой переплёт"], ["Spiral binding", "Переплёт на пружину"], ["Price list", "Прайс-лист"], ["Printing, per A4 sheet", "Печать, за лист A4"], ["A4 B&W, single-sided", "A4 чёрно-белая, односторонняя"], ["A4 B&W, double-sided", "A4 чёрно-белая, двусторонняя"], ["A4 Colour, single-sided", "A4 цветная, односторонняя"], ["A4 Colour, double-sided", "A4 цветная, двусторонняя"], ["Extras", "Дополнительно"], ["Card printing", "Печать на картоне"], ["Cutting to A5", "Резка до A5"], ["Customer order", "Заказ клиента"], ["Staff print log", "Журнал печати"], ["Glue", "Клей"], ["Spiral", "Пружина"], ["None", "Нет"], ["B&W", "Ч/Б"], ["Colour", "Цвет"], ["Single-sided", "Односторонняя"], ["Double-sided", "Двусторонняя"], ["Number of copies", "Количество копий"], ["First name", "Имя"], ["Last name", "Фамилия"], ["Phone number (linked to WhatsApp or Telegram)", "Номер телефона (привязанный к WhatsApp или Telegram)"], ["Type the number without the country code. Another country? Choose Other and type the full number starting with +.", "Введите номер без кода страны. Другая страна? Выберите «Другая» и введите номер полностью, начиная с +."], ["Other (type full number with +)", "Другая (номер полностью с +)"], ["Deadline", "Срок"], ["Date", "Дата"], ["Who's it for?", "Для кого?"], ["Who's going to do the work?", "Кто будет выполнять работу?"], ["Total price", "Итого"], ["Phone number", "Номер телефона"], ["Write here", "Напишите здесь"], [" sheets x ", " листов x "], [" + binding", " + переплёт"], [" + cutting", " + резка"], [" per copy", " за копию"], [", before discount ", ", до скидки "], ["Please enter first and last name.", "Введите имя и фамилию."], ["Please enter a valid phone number linked to WhatsApp or Telegram.", "Введите корректный номер телефона, привязанный к WhatsApp или Telegram."], ["Please enter the number of pages.", "Укажите количество страниц."], ["Please enter the number of copies.", "Укажите количество копий."], ["Please choose a deadline.", "Выберите срок."], ["Please choose the date.", "Выберите дату."], ["Please enter who it is for.", "Укажите, для кого."], ["Save print log", "Сохранить запись"], ["Send order", "Отправить заказ"], ["+{card} TJS per sheet", "+{card} TJS за лист"], ["Binding (per copy; choose None for plain printouts)", "Переплёт (за копию; выберите «Нет» для обычной распечатки)"], ["Cut to A5 (+{cut} TJS per copy)", "Резка до A5 (+{cut} TJS за копию)"], ["Staff price: the {disc}% discount is applied automatically.", "Цена для сотрудников: скидка {disc}% применяется автоматически."], [", staff discount ", ", скидка сотрудникам "], ["Staff report", "Отчёт по сотрудникам"], ["The report works after the Google script is connected.", "Отчёт заработает после подключения скрипта Google."], ["Staff access", "Доступ сотрудников"], ["Enter the staff code.", "Введите код сотрудника."], ["Cancel", "Отмена"], ["Unlock", "Открыть"], ["Wrong code.", "Неверный код."], ["Could not check the code. Check your connection and try again.", "Не удалось проверить код. Проверьте интернет и попробуйте снова."], ["Small Runs.", "Малые тиражи."], ["Big Ideas.", "Большие идеи."], ["Choose your format, see your price and bring your book to life.", "Выберите формат, сразу увидите цену и оживите свою книгу."], ["Start Your Order", "Оформить заказ"], ["ONE COPY OR A HUNDRED — PRINTED WITH CARE", "ОДНА КОПИЯ ИЛИ СТО — НАПЕЧАТАНО С ЗАБОТОЙ"], ["Payments", "Оплаты"], ["Parts of the order", "Состав заказа"], ["Part", "Часть"], ["Name, e.g. Cover", "Название, например Обложка"], ["Paper", "Бумага"], ["Card stock", "Картон"], ["Pages (A4)", "Страниц (A4)"], ["+ Add a part", "+ Добавить часть"], ["+ Add card cover", "+ Добавить обложку из картона"], ["Cover", "Обложка"], ["Each copy: ", "Одна копия: "], [" · total sheets: ", " · всего листов: "], ["Customer orders", "Заказы клиентов"], ["Staff debts", "Долги сотрудников"], ["Unpaid", "Не оплачено"], ["Paid", "Оплачено"], ["Partly paid", "Частично оплачено"], ["Refresh", "Обновить"], ["Loading…", "Загрузка…"], ["Could not load. Check your connection and try again.", "Не удалось загрузить. Проверьте интернет и попробуйте снова."], ["Could not save. Check your connection and try again.", "Не удалось сохранить. Проверьте интернет и попробуйте снова."], ["No orders here.", "Здесь нет заказов."], ["Total", "Сумма"], ["Left", "Осталось"], ["Left to collect", "Осталось получить"], ["Record payment", "Записать оплату"], ["No unpaid debts.", "Нет неоплаченных долгов."], ["Total unpaid", "Всего не оплачено"], ["records", "записей"], ["Mark month paid", "Отметить месяц оплаченным"], ["Details", "Подробнее"], ["Mark paid", "Отметить оплаченным"], ["Mark as paid?", "Отметить как оплаченное?"], ["Accepted", "Принят"], ["Printing", "Печатается"], ["Ready", "Готов"], ["Delivered", "Выдан"], ["Cancelled", "Отменён"]]).forEach(function(r){ D.ru[r[0]] = r[1]; });
+([["Place an order", "Сделать заказ"], ["Glue binding", "Клеевой переплёт"], ["Spiral binding", "Переплёт на пружину"], ["Price list", "Прайс-лист"], ["Printing, per A4 sheet", "Печать, за лист A4"], ["A4 B&W, single-sided", "A4 чёрно-белая, односторонняя"], ["A4 B&W, double-sided", "A4 чёрно-белая, двусторонняя"], ["A4 Colour, single-sided", "A4 цветная, односторонняя"], ["A4 Colour, double-sided", "A4 цветная, двусторонняя"], ["Extras", "Дополнительно"], ["Card printing", "Печать на картоне"], ["Cutting to A5", "Резка до A5"], ["Customer order", "Заказ клиента"], ["Staff print log", "Журнал печати"], ["Glue", "Клей"], ["Spiral", "Пружина"], ["None", "Нет"], ["B&W", "Ч/Б"], ["Colour", "Цвет"], ["Single-sided", "Односторонняя"], ["Double-sided", "Двусторонняя"], ["Number of copies", "Количество копий"], ["First name", "Имя"], ["Last name", "Фамилия"], ["Phone number (linked to WhatsApp or Telegram)", "Номер телефона (привязанный к WhatsApp или Telegram)"], ["Type the number without the country code. Another country? Choose Other and type the full number starting with +.", "Введите номер без кода страны. Другая страна? Выберите «Другая» и введите номер полностью, начиная с +."], ["Other (type full number with +)", "Другая (номер полностью с +)"], ["Date", "Дата"], ["Who's it for?", "Для кого?"], ["Who's going to do the work?", "Кто будет выполнять работу?"], ["Total price", "Итого"], ["Phone number", "Номер телефона"], ["Write here", "Напишите здесь"], [" sheets x ", " листов x "], [" + binding", " + переплёт"], [" + cutting", " + резка"], [" per copy", " за копию"], [", before discount ", ", до скидки "], ["Please enter first and last name.", "Введите имя и фамилию."], ["Please enter a valid phone number linked to WhatsApp or Telegram.", "Введите корректный номер телефона, привязанный к WhatsApp или Telegram."], ["Please enter the number of pages.", "Укажите количество страниц."], ["Please enter the number of copies.", "Укажите количество копий."], ["Please choose a deadline.", "Выберите срок."], ["Please choose the date.", "Выберите дату."], ["Please enter who it is for.", "Укажите, для кого."], ["Save print log", "Сохранить запись"], ["Send order", "Отправить заказ"], ["+{card} TJS per sheet", "+{card} TJS за лист"], ["Binding (per copy; choose None for plain printouts)", "Переплёт (за копию; выберите «Нет» для обычной распечатки)"], ["Cut to A5 (+{cut} TJS per copy)", "Резка до A5 (+{cut} TJS за копию)"], ["Staff price: the {disc}% discount is applied automatically.", "Цена для сотрудников: скидка {disc}% применяется автоматически."], [", staff discount ", ", скидка сотрудникам "], ["Staff report", "Отчёт по сотрудникам"], ["The report works after the Google script is connected.", "Отчёт заработает после подключения скрипта Google."], ["Staff access", "Доступ сотрудников"], ["Enter the staff code.", "Введите код сотрудника."], ["Cancel", "Отмена"], ["Unlock", "Открыть"], ["Wrong code.", "Неверный код."], ["Could not check the code. Check your connection and try again.", "Не удалось проверить код. Проверьте интернет и попробуйте снова."], ["Small Runs.", "Малые тиражи."], ["Big Ideas.", "Большие идеи."], ["Choose your format, see your price and bring your book to life.", "Выберите формат, сразу увидите цену и оживите свою книгу."], ["Start Your Order", "Оформить заказ"], ["ONE COPY OR A HUNDRED — PRINTED WITH CARE", "ОДНА КОПИЯ ИЛИ СТО — НАПЕЧАТАНО С ЗАБОТОЙ"], ["Payments", "Оплаты"], ["Parts of the order", "Состав заказа"], ["Part", "Часть"], ["Name, e.g. Cover", "Название, например Обложка"], ["Paper", "Бумага"], ["Card stock", "Картон"], ["Pages (A4)", "Страниц (A4)"], ["+ Add a part", "+ Добавить часть"], ["+ Add card cover", "+ Добавить обложку из картона"], ["Cover", "Обложка"], ["Each copy: ", "Одна копия: "], [" · total sheets: ", " · всего листов: "], ["Customer orders", "Заказы клиентов"], ["Staff debts", "Долги сотрудников"], ["Unpaid", "Не оплачено"], ["Paid", "Оплачено"], ["Partly paid", "Частично оплачено"], ["Refresh", "Обновить"], ["Loading…", "Загрузка…"], ["Could not load. Check your connection and try again.", "Не удалось загрузить. Проверьте интернет и попробуйте снова."], ["Could not save. Check your connection and try again.", "Не удалось сохранить. Проверьте интернет и попробуйте снова."], ["No orders here.", "Здесь нет заказов."], ["Total", "Сумма"], ["Left", "Осталось"], ["Left to collect", "Осталось получить"], ["Record payment", "Записать оплату"], ["No unpaid debts.", "Нет неоплаченных долгов."], ["Total unpaid", "Всего не оплачено"], ["records", "записей"], ["Mark month paid", "Отметить месяц оплаченным"], ["Details", "Подробнее"], ["Mark paid", "Отметить оплаченным"], ["Mark as paid?", "Отметить как оплаченное?"], ["Accepted", "Принят"], ["Printing", "Печатается"], ["Ready", "Готов"], ["Delivered", "Выдан"], ["Cancelled", "Отменён"], ["Order sent. The next screen shows your order number and how to contact us.", "Заказ отправлен. На следующем экране будет номер заказа и способы связаться с нами."], ["Deadline (working days Tuesday to Thursday)", "Срок (рабочие дни: со вторника по четверг)"], ["Attach your file (PDF, Word, EPUB or any other file)", "Прикрепите файл (PDF, Word, EPUB или любой другой)"], ["Choose file", "Выбрать файл"], ["Comment (describe your details)", "Комментарий (опишите подробности)"], ["Write any details about your order", "Напишите любые подробности заказа"], ["You can attach up to", "Можно прикрепить не более"], ["files.", "файлов."], ["This file is too large: ", "Файл слишком большой: "], ["Uploading file ", "Загрузка файла "], [" of ", " из "], ["Could not upload the file. Check your connection and try again, or send the order without a file.", "Не удалось загрузить файл. Проверьте интернет и попробуйте снова или отправьте заказ без файла."], ["Up to {maxf} files, {maxmb} MB each. Keep this page open while large files upload.", "До {maxf} файлов, по {maxmb} МБ каждый. Не закрывайте страницу, пока загружаются большие файлы."], ["This file is empty: ", "Файл пустой: "]]).forEach(function(r){ D.ru[r[0]] = r[1]; });
 function t(s){ var d = D[LANG]; return (d && d[s]) || s; }
 function tok(k){
   if(k === "disc") return String(Math.round(DISCOUNT * 100));
+  if(k === "maxf") return String(MAX_FILES);
+  if(k === "maxmb") return String(MAX_MB);
   var v = { bw_single: PRICE["B&W"].Single, bw_double: PRICE["B&W"].Double, colour_single: PRICE["Colour"].Single, colour_double: PRICE["Colour"].Double, card: CARD_PER_SHEET, cut: CUT_A5, glue: BINDING.Glue, spiral: BINDING.Spiral }[k];
   return v === undefined ? null : v.toFixed(2);
 }
 function fillTokens(str){ return str.replace(/\{(\w+)\}/g, function(m, k){ var v = tok(k); return v === null ? m : v; }); }
 var orig = typeof WeakMap !== "undefined" ? new WeakMap() : null;
-var SKIP = "#tier,#total,#err,#msg,#send,#ge,#paylist,.pline";
+var SKIP = "#tier,#total,#err,#msg,#send,#ge,#paylist,#flist,.pline";
 function translate(root){
   if(document.createTreeWalker && orig){
     var tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), n;
@@ -437,6 +462,7 @@ function data(){
     pages: f.pagesPerCopy, copies: f.c, sheets: f.sheetsPerCopy * f.c, total: f.total.toFixed(2),
     forwho: isLog ? $("forwho").value.trim() : "", worker: isLog ? $("worker").value : "",
     contact: isLog ? "" : fullPhone(), code: isLog ? STAFF_CODE : "",
+    comment: isLog ? "" : $("cm").value.trim(), files: "",
     discount: f.disc ? Math.round(DISCOUNT * 100) + "%" : "0%"
   };
 }
@@ -447,6 +473,7 @@ function text(){
   L.push("Binding: " + d.binding, "Parts:");
   parts.forEach(function(p, i){ L.push("- " + partLine(p, i)); });
   if($("cut").checked) L.push("Cut to A5: yes");
+  if(d.comment) L.push("Comment: " + d.comment);
   L.push("Number of copies: " + d.copies, "Total sheets: " + d.sheets, "Total: " + money(f.total));
   return L.join("\n");
 }
@@ -476,7 +503,7 @@ var STAFF_CODE = "";
 try{ STAFF_CODE = sessionStorage.getItem("gf_staff") || ""; }catch(e){}
 function askCode(done){
   var g = $("gate"), inp = $("gc"), err = $("ge");
-  inp.value = ""; err.textContent = "";
+  inp.value = ""; err.textContent = ""; inp.type = "password"; $("gv").classList.remove("on");
   g.style.display = "flex"; g.classList.remove("show"); void g.offsetWidth; g.classList.add("show");
   setTimeout(function(){ inp.focus(); }, 80);
   function close(){ g.style.display = "none"; }
@@ -581,6 +608,91 @@ $("paylist").onclick = function(ev){
   });
 };
 
+// ---------- attached files ----------
+var FILES = [];
+function fmtSize(b){ return b >= 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB"; }
+function renderFiles(){
+  $("flist").innerHTML = FILES.map(function(f, i){
+    return '<div class="fitem"><span>' + esc(f.name) + '</span><small>' + fmtSize(f.size) + '</small><button type="button" data-i="' + i + '" aria-label="Remove">&times;</button></div>';
+  }).join("");
+}
+function addFiles(list){
+  var err = "";
+  Array.prototype.forEach.call(list, function(f){
+    if(f.size === 0){ err = t("This file is empty: ") + f.name; return; }
+    if(FILES.length >= MAX_FILES){ err = t("You can attach up to") + " " + MAX_FILES + " " + t("files."); return; }
+    if(f.size > MAX_MB * 1048576){ err = t("This file is too large: ") + f.name; return; }
+    FILES.push(f);
+  });
+  renderFiles();
+  $("err").textContent = err;
+}
+function readB64(blob){
+  return new Promise(function(res, rej){
+    var r = new FileReader();
+    r.onload = function(){ res(String(r.result).split(",")[1] || ""); };
+    r.onerror = function(){ rej(new Error("read")); };
+    r.readAsDataURL(blob);
+  });
+}
+function postJSON(o){
+  return fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(o) }).then(function(r){ return r.json(); });
+}
+function retry(fn, n){
+  return fn().catch(function(e){
+    if(n <= 0) throw e;
+    return new Promise(function(r){ setTimeout(r, 1500); }).then(function(){ return retry(fn, n - 1); });
+  });
+}
+// a file goes to the script in pieces; the last piece returns the Drive link
+function uploadOne(f, onPct){
+  return postJSON({ type: "up_start", name: f.name, mime: f.type || "application/octet-stream", size: f.size }).then(function(j){
+    if(!j || !j.ok) throw new Error("start");
+    function send(start){
+      var end = Math.min(start + CHUNK, f.size);
+      return readB64(f.slice(start, end)).then(function(b64){
+        return retry(function(){
+          return postJSON({ type: "up_chunk", id: j.id, start: start, data: b64 }).then(function(r){
+            if(!r || !r.ok) throw new Error("chunk");
+            return r;
+          });
+        }, 2);
+      }).then(function(r){
+        onPct(Math.round(end / f.size * 100));
+        if(r.done) return r.url;
+        if(end >= f.size) throw new Error("incomplete");
+        return send(end);
+      });
+    }
+    return send(0);
+  });
+}
+function orderUrl(d){
+  if(SCRIPT_URL) return SCRIPT_URL + "?" + Object.keys(d).map(function(k){ return k + "=" + encodeURIComponent(d[k]); }).join("&");
+  return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(d.type === "log" ? "Print log" : "New book order") + "&body=" + encodeURIComponent(text());
+}
+function finishSend(d){
+  var url = orderUrl(d);
+  var w = window.open(url, "_blank");
+  if(!w && d.files) window.location.href = url;   // a long upload may lose the right to open a new tab
+  if(d.type === "order") $("msg").textContent = t("Order sent. The next screen shows your order number and how to contact us.");
+}
+function sendWithFiles(d){
+  if(!SCRIPT_URL || !window.fetch){ $("err").textContent = t("Could not upload the file. Check your connection and try again, or send the order without a file."); return; }
+  var links = [], btn = $("send");
+  btn.disabled = true; $("err").textContent = "";
+  function step(i){
+    if(i >= FILES.length){ btn.disabled = false; d.files = links.join("|"); finishSend(d); return; }
+    var label = t("Uploading file ") + (i + 1) + t(" of ") + FILES.length + "… ";
+    $("msg").textContent = label + "0%";
+    uploadOne(FILES[i], function(pct){ $("msg").textContent = label + pct + "%"; }).then(function(u){ links.push(u); step(i + 1); }).catch(function(){
+      btn.disabled = false; $("msg").textContent = "";
+      $("err").textContent = t("Could not upload the file. Check your connection and try again, or send the order without a file.");
+    });
+  }
+  step(0);
+}
+
 // ---------- modes ----------
 function setMode(m){
   sel.mode = m;
@@ -590,7 +702,7 @@ function setMode(m){
     loadPay();
   } else {
     swap([$("payview")], [$("entry")]);
-    swap(log ? [$("cust"), $("dlcard")] : [$("staffcard"), $("report")], log ? [$("staffcard"), $("report")] : [$("cust"), $("dlcard")]);
+    swap(log ? [$("cust"), $("dlcard"), $("filebox")] : [$("staffcard"), $("report")], log ? [$("staffcard"), $("report")] : [$("cust"), $("dlcard"), $("filebox")]);
     updateSend();
     $("err").textContent = ""; $("msg").textContent = "";
     calc();
@@ -640,13 +752,22 @@ $("priceBtn").onclick = function(){
 };
 $("send").onclick = function(){
   if(!valid()) return;
-  var d = data(), url;
-  if(SCRIPT_URL){
-    url = SCRIPT_URL + "?" + Object.keys(d).map(function(k){ return k + "=" + encodeURIComponent(d[k]); }).join("&");
-  } else {
-    url = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(d.type === "log" ? "Print log" : "New book order") + "&body=" + encodeURIComponent(text());
-  }
-  window.open(url, "_blank");
+  var d = data();
+  if(d.type === "order" && FILES.length) sendWithFiles(d);
+  else finishSend(d);
+};
+$("pick").onclick = function(){ $("files").click(); };
+$("files").onchange = function(){ addFiles(this.files); this.value = ""; };
+$("flist").onclick = function(ev){
+  var b = ev.target.closest ? ev.target.closest("button") : null;
+  if(!b) return;
+  FILES.splice(parseInt(b.dataset.i, 10), 1); renderFiles();
+};
+$("gv").onclick = function(){
+  var inp = $("gc"), show = inp.type === "password";
+  inp.type = show ? "text" : "password";
+  this.classList.toggle("on", show);
+  inp.focus();
 };
 $("report").onclick = function(){
   if(!SCRIPT_URL){ $("msg").textContent = t("The report works after the Google script is connected."); return; }
